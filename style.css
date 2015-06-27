@@ -1,0 +1,124 @@
+body{
+	background: #192d40 url('images/bg.jpg') repeat-x; 
+	font-family:Arial, Helvetica, sans-serif;
+}
+.logo{
+		margin:0 auto;
+		width:780px;
+		height:110px;
+		color:#FFF;
+		font-size:260%;
+		font-family :Impact, 'Techno CE', sans-serif;
+	}
+.ft1{	
+		position:absolute;
+		margin-top:15px;
+	}
+.ft2{
+		position:absolute;
+		color:#3F576E;
+	}
+.logo_img{
+		position:absolute;
+		margin-top:0px;
+		margin-left:35px;
+		width:120px;
+		height:50px;
+		background:url(images/leaf.gif) no-repeat;
+	}
+.head{
+	margin:0 auto;
+	width:780px;
+	padding:10px 8px;
+	border-width:1px ;
+	border-style:solid none;
+	border-color:#1A2735;
+	
+	}
+.head_font1{
+	font-size:19px;
+	color:#fff;
+	font-weight:bold;
+	}
+a.a1:link{
+	color:#fff;
+	text-decoration:none;
+	}
+a.a1:hover{
+		background:#000;
+	}
+a.a1:visited{
+	color:#fff;}
+	
+.head_font2{
+	font-size:11px;
+	color:#67707A;
+	
+	}
+	
+.container{
+	margin:0 auto;
+	width:780px;
+	height:662px;
+	padding: 10px 8px;
+	color:#fff;
+	font-size:15px;
+	line-height:25px;
+	padding:10px;
+	}
+.right{
+	width:570px;
+	height:650px;
+	float:right;
+	}
+.left{
+	float:left;
+	width:200px;
+	height:217px;
+	}
+.container_font1{
+	color:#67707A;}
+.right_font1{
+	margin-left:20px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:23px;}
+p.right_font2{
+	margin-left:20px;
+	font-size:13px;
+	}
+.right_font3{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:18px;
+	margin-left:25px;
+	}
+ul.ul1{
+	margin:15px 0px 15px 40px;
+	font-size:12px;}
+a.a2:hover{
+	text-decoration:none;}
+a.a2:visited{color:#fff;}
+a.a2:link{
+	color:#fff;}
+.bottom{
+	border-top:1px;
+	border-top-style:solid;
+	border-top-color:#324455;
+	padding:10px;
+	width:780px;
+	height:98px;
+	margin:0 auto;
+	}
+.bottom_right{
+	float:right;
+	font-size:12px;
+	color:#A0A9B0;}
+.bottom_left{
+	float:left;
+	font-size:12px;
+	color:#A0A9B0;}
+a.a3:link{
+	color:#A0A9B0;}
+a.a3:hover{
+	text-decoration:none;}
+a.a3:visited{
+	color:#A0A9B0;}
