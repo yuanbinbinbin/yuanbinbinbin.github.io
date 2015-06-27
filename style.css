@@ -2,10 +2,24 @@ body{
 	background: #192d40 url('images/bg.jpg') repeat-x; 
 	font-family:Arial, Helvetica, sans-serif;
 }
+.index_head{
+	
+	border:none;
+	width:800px;
+	margin: 0px auto;
+	heignt:200px;
+	
+	}
+.index_bottom{
+		margin:0 auto;
+		width:800px;
+		height:120px;
+		border:none;
+	}
 .logo{
 		margin:0 auto;
 		width:780px;
-		height:110px;
+		height:90px;
 		color:#FFF;
 		font-size:260%;
 		font-family :Impact, 'Techno CE', sans-serif;
@@ -122,3 +136,18 @@ a.a3:hover{
 	text-decoration:none;}
 a.a3:visited{
 	color:#A0A9B0;}
+a.left_a1:link{
+	font-size:13px;
+	text-decoration:none;
+	color:#fff;}
+a.left_a1:visited{
+	color:#fff;}
+.left_head{
+	border:1px;
+	border-style:solid none;
+	border-color:#324455;
+	height:20px;
+	padding:5px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size:15px;
+	}
