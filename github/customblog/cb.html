@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>自定义自己的博客</title>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="GitHub，自定义，custom，个人博客，blog"/>
+<meta name="author" content="yuanbin" />
+</head>
+<body>
+<div style="width:800px;height:176px; margin:0 auto;"><iframe src="../../head.html" scrolling="no" style="height:190px;width:800px;height:170px;border:none;"></iframe></div>
+<div class="container">
+<h2>自定义自己的博客</h2>
+    <p>关键词： GitHub , 个人博客，自定义，custom</p>
+	<p style="font-size:14px; line-height:20px; letter-spacing:0px;">
+	<div style="margin:0 auto; width:400px;">duang!!&nbsp;&nbsp;<img src="../../images/come1.gif"/>&nbsp;&nbsp;binge来也！！！</div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;昨天我们已经创建好自己的blog，今天我将介绍如何自定义我们的blog，废话不多说，Let's Go！！！</br></br>
+    <h3 style="margin:0px;">1.&nbsp;&nbsp;前导篇</h3>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;昨天我们新建的blog，其实是一个代码仓库，由git替我们管理，现在我们要管理自己的仓库，将自己写好的网页存入仓库中，就需要我们与git进行通信，既然我们创建的是仓库，仓库肯定有门的啦！那我们肯定得需要一把钥匙进入仓库，要不然别人也就可以管理你的仓库了！你妹那还怎么愉快的玩耍？因此我们需要在本地创建密匙，也就是ssh（其实我也不懂！！），通过github上传给git，然后我们就可以不用通过github直接与git通信啦！！</br>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有过git经验的人，肯定知道用dos与git进行通信，但是辣么长的代码，我可记不住啊！那可怎么办啊？好在GitHub跟我们提供了桌面化的管理软件，不仅不用代码连接仓库，连密匙都会帮我们自动生成，并上传，极大的方便了我们！GitHub is so cool！！
+     <h3>2.&nbsp;&nbsp;下载与安装篇</h3>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过上面的介绍，我们需要下载一个小巧但是功能强大的辅助软件。因为binge是个穷人，所以没钱买到高大上的mac，又因为自己技术有限用不了Linux，所以我只能介绍Windows版的给大家，首先让我们先下载下来吧！</br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="a1" href="https://windows.github.com/" target="_blank">我是传送门，快来点我！！</a></br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一步：点击上面的连接后进入下载页面，点击下图绿色按钮进行下载。</br>
+     	<img src="images/download1.png" width="800px"height="350px"/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果出现无法显示此网页或访问缓慢，是因为GitHub被我天朝墙了，请耐心等待，我大天朝的局域网在逐步完善哈！！当你发现只有660.09KB是不是内心笑开了花，内心是不是在窃喜果然很小巧？But binge只能无奈的告诉你，You Are Wrong！！他只是个下载器！！仅仅是下载器而已！！艰难的下载完后，它是一只紫色的小猫猫，so 卡哇伊！双击它进行下载安装，将会出现下面的界面。</br>
+        <div style="width:320px;height:160px;margin:0 auto;"><img src="images/download2.png" width="320px"height="160px"/></div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稍等片刻将进入下面的界面，点击Accept按钮，进入下一步。</br>
+         <div style="width:440px;height:448px;margin:0 auto;"><img src="images/download3.png" width="440px"height="448px"/></div>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;稍等正在下载并安装 ，进入下一步。</br>
+         <div style="width:526px;height:193px;margin:0 auto;"><img src="images/download4.png" width="526px"height="193px"/></div>
+        </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果你很幸运，那很快就会下载并自动安装完，然而我并不是那个幸运儿！
+        </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;竟然报错了，如下图。</br>
+		<div style="width:526px;height:389px;margin:0 auto;"><img src="images/download5.png" width="526px"height="389px"/></div>
+        </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An error occurred attempting to install GitHub(在尝试安装GitHub时发生一个错误！)点击Details让我们看看详细内容。An error occurred trying to download'http://github-windows.s3.amazonaws.com/GitHub.application'.
+（尝试从指定网站下载时发生错误！）
+See the setup log file located at 'C:\Users\ADMINI~1\AppData\Local\Temp\VSDEB5E.tmp\install.log' for more information.（进入C盘里的一个文件夹下的日志查看详细信息！）好的，那我们就去看看到底是什么错误！！打开文件后看到下图内容。</br>
+		<div style="width:773px;height:529px;margin:0 auto;"><img src="images/download6.jpg" width="773px"height="529px"/></div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前面的一大堆说明“Microsoft .NET Framework 4.5 (x86 and x64)”这个已经下载并安装完成了，下滑文档到最后，发现一个Error，从'http://github-windows.s3.amazonaws.com/GitHub.application'.下载错误！！那我们在浏览器打开这个网址到底是个啥！！</br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;竟然出现个下载界面！（如下图）好的，先下载下来，在说！！！</br>
+         <div style="width:438px;height:344px;margin:0 auto;"><img src="images/download7.png" width="438px"height="344px"/></div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下载下来，竟是这么个东西！！（下图），双击他试试！你妹啊！又回到开始了！</br>
+         <div style="width:590px;height:27px;margin:0 auto;"><img src="images/download8.png" width="590px"height="27px"/></div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这可怎么办！不下载 下来，怎么开展下一步！！！还好binge机智，\(^o^)/，自己不会，可以百度啊！百度大神还有的！经过百度知将http改为https就好了！那我们试试吧！！嘎嘎....</br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你妹啊！还是不行，擦，百度果然坑啊，binge灵机一转，是不是因为GitHub被墙了的原因呢？好的，那我翻墙试试！<a class="a1" href="#" target="_blank">不会翻墙的童鞋，请点我！！</a>让我们重新双击我们的小猫猫。出现下图界面，好的，点击Install安装！</br>
+          <div style="width:611px;height:404px;margin:0 auto;"><img src="images/download9.png" width="611px"height="404px"/></div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进入下载界面，45.2MB有点多啊！！还是耐心的等待吧！！</br>
+         <div style="width:531px;height:311px;margin:0 auto;"><img src="images/download10.png" width="531px"height="311px"/></div>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好的在这下载的阶段让我们，来曲music，陶冶陶冶我们烦躁的心情！<a class="a1" href="http://music.163.com/#/m/song?id=17706562" target="_blank">我是好心情快点我！！！</a>Good Time，热爱你自己，热爱生活，不管你在学习或者今后的生活中遇到多么大的困难，都要热爱自己，没有过不去的坎，不要烦恼，急躁，因为那些完全是没有用的，困难依然存在，静下心来，仔细想想如何去解决，才是正确的做法，深呼吸，想想阳光，想想温暖，热爱自己，珍惜生命！请远离毒品！（咳咳，说顺嘴了！！O(∩_∩O)）</br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK!!在循环了不知道多少遍的歌曲中，我们的GitHub终于安装完成了！！在我们的桌面，将会出现下图的两个紫色的图标，双击小猫进行登录！</br>
+         <div style="width:321px;height:179px;margin:0 auto;"><img src="images/download11.png" width="321px"height="179px"/></div>
+         <h3>3.&nbsp;&nbsp;登录与下载仓库篇</h3>
+ 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在登陆界面，填写完账户和密码后，点击login进行登录</br>
+         <div style="width:568px;height:258px;margin:0 auto;"><img src="images/login1.png" width="568px"height="258px"/></div>        
+    </p>
+</div>
+<div style="width:100%;height:120px; "><iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe></div>
+</body>
+</html>

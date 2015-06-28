@@ -3,12 +3,10 @@ body{
 	font-family:Arial, Helvetica, sans-serif;
 }
 .index_head{
-	
 	border:none;
 	width:800px;
 	margin: 0px auto;
 	heignt:200px;
-	
 	}
 .index_bottom{
 		margin:0 auto;
@@ -78,7 +76,6 @@ a.a1:visited{
 	color:#fff;
 	font-size:15px;
 	line-height:25px;
-	padding:10px;
 	}
 .right{
 	width:570px;
