@@ -17,3 +17,7 @@ a.a1:link{
 	text-decoration:none;}
 a.a1:visited{color:#fff;}
 a.a1:hover{color:#CCC}
+.head1{
+	width:800px;
+	margin:0 auto;
+	height:176px;}
