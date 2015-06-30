@@ -4,25 +4,51 @@
 <link  href="style.css" rel = stylesheet type="text/css">
 <title>主页</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="index.js"></script>
 </head>
 <body>
 	<div class ="index_head"><iframe width="800px;" height="176px" style="border:none;" scrolling="no"src="head.html"></iframe></div>
-    <div class="container">
+    <div class="container"  >
     	<div class="right">
-				<p><span class="right_font1">Lorem ipsum dolor!</span></p>
-                <p class="right_font2"><span >Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></p>
-        		<p><span class="right_font3">Dolor sit amet:</span></p>
-                <ul class="ul1">
-                	<li><a class ="a2"href="#">Dolor in reprehenderit</a></li>
-                    <li><a class ="a2"href="#">In reprehenderit</a></li>
-                    <li><a class ="a2"href="#">Molot in reprehenderit in volupta</a></li>
-                    <li><a class ="a2"href="#">Rure dolor in reprehenderit in voluptat</a></li>
-                </ul>
-                <p><span class="right_font3">Lorem ipsum dolor</span></p>
-                <p class="right_font2"><span >Lorem ipsum dolor sit amet, consectetur adipisicing elit, im veniam, quis n ullamco laboris nisi ut aliquip im veniam, quis n ullamco laboris nisi ut aliquip sed do eiusmod tempor incididunt ut labore et dolore magna aliquaim veniam </span></p>
-                <p class="right_font2"><span >Quis n ullamco laboris nisi ut aliquip. Ut enim ad minim veniam, quis n ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></p>
-                <p class="right_font2"><span >Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </span></p>
-                <p class="right_font2"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, im veniam, quis n ullamco laboris nisi ut aliquip im veniam, quis n ullamco laboris nisi ut aliquip. </span></p>
+         	<div style="width:520px;  height:292px; margin:0 auto;overflow:hidden;" >
+            	<div id="left"  style="height:292px; position:absolute; z-index:2; margin-left:5px;text-align:center ; line-height:292px;" ><span onclick="left()"><<</span></div>
+             	<div id="right"  style="height:292px; position:absolute; z-index:2; margin-left:497px;  text-align:center ; line-height:292px;" ><span onclick="right();">>></span></div>
+                <div id="bottom"  style="height:12px; width:520px; position:absolute; z-index:2; margin-top:250px; text-align:center ; " >
+                	<img id="img1" src="images/page_selected.png" style="margin:0 auto;"/>
+                    <img id="img2" src="images/page_not_selected.png" style="margin:0 auto;"/>
+                    <img id="img3" src="images/page_not_selected.png" style="margin:0 auto;"/>
+                    <img id="img4" src="images/page_not_selected.png" style="margin:0 auto;"/>
+                    <img id="img5" src="images/page_not_selected.png" style="margin:0 auto;"/>
+                </div>
+        		<div id="right_main"  class="right_main"  >         
+                    <div class="right_main_long" id="right_main_long">
+                        <a href="github/createownblog/cob.html"><img style="width:520px; margin:0 auto;" src="images/hellogit.png" width="520px" height="292px"/></a>
+                        <img style="width:520px; margin:0 auto;" src="images/hope.png" width="520px" height="292px"/>
+                       	<img style="width:520px; margin:0 auto;" src="images/hope.png" width="520px" height="292px"/>
+                      	<img style="width:520px; margin:0 auto;" src="images/hope.png" width="520px" height="292px"/>
+                        <img style="width:520px; margin:0 auto;" src="images/hope.png" width="520px" height="292px"/>
+                    </div>
+                </div>
+			</div>
+            <div>
+            	<table width="520px"  style=" margin:0 auto; margin-top:20px;">
+                	<tr>
+                    	<td width="173px">
+                        		<div  style=" border:1px; border-bottom-style:solid;">Best Words</div>   
+                        </td>
+                        
+                        <td width="173px">
+                        		<div style="border:1px; border-bottom-style:solid; vertical-align:baseline;">Music
+                                </div>
+                        </td>
+                        
+                        <td width="173px">
+                        		<div style="border:1px; border-bottom-style:solid;">Story
+                                </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
         
 		<div class="left">
@@ -33,7 +59,7 @@
                 <p><span class ="container_font1">28/6/2015</span></br><a class="left_a1" href="github/customblog/cb.html"/>自定义自己的博客。</a></p>
                 <span class ="container_font1">27/6/2015</span></br><a class="left_a1" href="github/createownblog/cob.html">利用GitHub创建自己的博客。</a>
                </br></br>
-            <div class ="left_head">
+            <div class ="left_head" style="margin-top:9px">
                 	文章分类
                 </div>
                <p></p><a class="left_a1" href="structure/index.html">数据结构&nbsp;(0)</a>
@@ -53,6 +79,6 @@
     <div class="index_bottom">
     <iframe src="bottom.html"  scrolling="no" width="800px;" height="120px" style="border:none"></iframe>
     </div>   
-    
+    <script> init()</script>
 </body>
 </html>

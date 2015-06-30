@@ -78,7 +78,7 @@ a.a1:visited{
 	line-height:25px;
 	}
 .right{
-	width:570px;
+	width:580px;
 	height:650px;
 	float:right;
 	}
@@ -148,3 +148,17 @@ a.left_a1:visited{
 	font-family:Georgia, "Times New Roman", Times, serif;
 	font-size:15px;
 	}
+.right_main{
+	width:520px;
+	height:292px;
+	margin:0 auto;
+	overflow:hidden;
+	}
+.right_main_long{
+	width:2600px;
+	z-index:0;
+	}
+
+.right_main_long  img{
+	
+	float:left;}
