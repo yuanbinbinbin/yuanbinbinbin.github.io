@@ -8,3 +8,12 @@ body{
 	font-size:15px;
 	line-height:25px;}
 
+a.a1:link{
+	color:#fff;
+	text-decoration:none;}
+a.a1:visited{color:#fff;}
+a.a1:hover{color:#CCC}
+.itemmode{
+	border-bottom:1px;
+	border-style:none  none dashed none ;
+	}

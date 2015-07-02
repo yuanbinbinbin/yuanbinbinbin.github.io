@@ -1,0 +1,88 @@
+<html>
+<head>
+<title> </title>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div style="width:800px;height:176px; margin:0 auto;"><iframe src="../../head.html" scrolling="no" style="height:190px;width:800px;height:170px;border:none;"></iframe></div>
+<div class="container">
+<h2>Java命名规范</h2>
+    <p>关键词： Java , 命名规范</p>
+	<p style="font-size:14px; line-height:20px; letter-spacing:0px;"> 
+    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不知道大家是如何定义优秀程序猿的，在我看来优秀的程序猿不仅要具备很强的编码能力，还应该有良好的编码习惯，比如代码命名。尽管A有很强的编码能力，漂亮的解决算法，但是他的命名确实乱的一塌糊涂！我认为他并不是一个好的程序猿，尽管B编码能力比较弱，但是他的命名很规范，其他程序猿一看就知道方法是要解决什么问题，变量是代表什么含义！我认为这就是一个好的程序猿！你要知道在开发一个项目时，我们是团体合作的，很有可能你现在写的某个方法，其他人会调用，难不成每个人都要追着问你每个方法的含义？那别人还要不要工作？你还要不要工作？因此一个好的命名是很重要的！再者说，一个项目的生命周期，大部分的时间是在维护阶段度过的，当时写时你能记住每个变量的含义，那一两个月以后呢？如果忘记了，又要花大量的时间去思考每个变量的含义是啥，方法是完成什么功能的！因此拥有良好的命名规范是必须的！binge自认为记性不好，因此找来了书本上以及网上大神总结的经验，与大家一起学习，思考！共勉！</br>
+    	<h3>包的命名</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;包（Package）他是一组相关类的集合，也就是你工程的集合，名字都是由小写字母组成。例如：stumanagentsys</br>
+    	<h3>类的命名</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类（Class）Java程序的组织单位，就是一类具有相似属性的抽象模板，比如：人类，水果，蔬菜。类由状态和行为组成。命名一般由若干个具有实际意义的单词组成，每个单词的首字母大写，其他均小写。例如：学生信息类StuInfo、书籍信息类BookInfo</br>
+    	<h3>变量的命名</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;变量用来表示数据，表示特定具有实际意义的一个数据。命名一般由若干个具有实际意义的单词组成，首个单词的首字母小写，其他单词的首字母均小大写。例如：userName、userAddress</br>
+    	<h3>常量的命名</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常量通常用final和static来修饰变量。final变量只能被赋值一次，赋值后将不会改变。static静态变量，无论一个类被创建多少次，他们共用static变量。命名一般由若干个单词组成，每个单词有 '_'符号连接，每个单词均为大写，如：MAX_VALUE，MIN_WIDTH</br>
+        <h3>方法命名</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用能表示该参数含义的单词命名，和变量命名规则一致。</br>
+        <h3>方法的参数命名</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用能表示该参数含义的单词命名，和变量命名规则一致，如果可以，使用和要赋值的字段一样的名字。</br>
+         <h3>编码风格</h3>
+         <h4>空格的使用</h4>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;括号前后不需要空格，逗号之后紧跟一个空格。例如：canvas.drawCircle(mRadius, mRadius, mRadius, mPaint);</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一元操作符不需要空格，for语句分号后有空格。例如：for(int i = 0; i < 10; i++)</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二元操作符前后跟空格。例如：int i = a + b;</br>
+        <h4>注释的使用</h4>
+        <h5>源文件注释&nbsp;&nbsp;<a class="a1" href="http://gyhgc.iteye.com/blog/225039" target="_blank">摘自gyhgc</a></h5>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;源文件注释采用 /** …… */，在每个源文件的头部要有必要的注释信息，包括：文件名；文件编号；版本号；作者；创建时间；文件描述包括本文件历史修改记录等。中文注释模版：</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/**</br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 文 件 名 :</br>
+  		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  * CopyRright (c) 2008-xxxx:</br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 文件编号：</br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 创 建 人：</br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 日    期：</br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 修 改 人：</br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 日   期：</br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 描   述：</br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 版 本 号：</br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/  </br>
+        <h5>类（模块）注释</h5>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 类（模块）注释采用 /** …… */，在每个类（模块）的头部要有必要的注释信息，包括：工程名；类（模块）编号；命名空间；类可以运行的JDK版本；版本号；作者；创建时间；类（模块）功能描述（如功能、主要算法、内部各部分之间的关系、该类与其类的关系等，必要时还要有一些如特别的软硬件要求等说明）；主要函数或过程清单及本类（模块）历史修改记录等。
+英文注释模版： </br>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/**</br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * CopyRright (c)2008-xxxx:   <展望软件Forsoft >   </br>                      
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     * Project:                     <项目工程名 ></br>                                         
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  * Module ID:   <(模块)类编号，可以引用系统设计中的类编号> </br>  
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    * Comments:  <对此类的描述，可以引用系统设计中的描述> </br>       							        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         * JDK version used:      <JDK1.6>    </br>                         
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * Namespace:           <命名空间>      </br>                       
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Author：        <作者中文名或拼音缩写>   </br>             
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* Create Date：  <创建日期，格式:YYYY-MM-DD></br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * Modified By：   <修改人中文名或拼音缩写>  </br>                                      
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * Modified Date:  <修改日期，格式:YYYY-MM-DD>   </br>                                
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    * Why & What is modified  <修改原因描述>   </br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * Version:                  <版本号>      </br>                
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */ 
+         <h5>接口注释</h5>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 接口注释采用 /** …… */，在满足类注释的基础之上，接口注释应该包含描述接口的目的、它应如何被使用以及如何不被使用，块标记部分必须注明作者和版本。
+        <h5>方法注释</h5>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;函数注释采用 /** ……*/，在每个函数或者过程的前面要有必要的注释信息，包括：函数或过程名称；功能描述；输入、输出及返回值说明；调用关系及被调用关系说明等。函数注释里面可以不出现版本号（@version）。 </br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/** </br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    * 函 数 名 : </br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  * 功能描述： </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 输入参数:     <按照参数定义顺序> </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *             <@param后面空格后跟着参数的变量名字> </br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  *            <（不是类型），空格后跟着对该参数的描述。> </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 返 回 值:  - 类型 <说明> </br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  *            <返回为空（void）的构造函数或者函数> </br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*           < @return可以省略; 如果返回值就是输入参数，必须 *            用与输入参数的@param相同的描述信息; 必要的时*            候注明特殊条件写的返回值。> </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 异    常：<按照异常名字的字母顺序> </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 创 建 人: </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 日    期: </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 修 改 人: </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 日    期: </br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */ </br>
+      
+    </p>
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK!binge要说的也就这些了！希望大家与和我从中有所收获，在家，下篇文章见！！^_^
+    <div style="margin:0 auto;width:480px;"><img src="../../images/leave.gif" /></div>
+    <h3 align="center">写博不易，转载请注</h3>
+</div>
+<div style="width:100%;height:120px;"><iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe></div>
+</body>
+</html>
