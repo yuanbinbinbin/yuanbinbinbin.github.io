@@ -1,0 +1,93 @@
+<html>
+<head>
+<title> </title>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div style="width:800px;height:176px; margin:0 auto;"><iframe src="../../head.html" scrolling="no" style="height:190px;width:800px;height:170px;border:none;"></iframe></div>
+<div class="container">
+
+<h2>SQL基础&nbsp;&nbsp;一</h2>
+    <p>关键词： SQL , 基础，SQL入门，SQL经典</p>
+	<p style="font-size:14px; line-height:20px; letter-spacing:0px;">
+    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Today,binge将和大家一起学习SQL的基础，学过的算是复习，没学过的你更得认真看了，(*^__^*) ！！
+         <h3 style="margin:0px;">1.&nbsp;&nbsp;前言</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当今时代任何操作都涉及数据，用来管理和检索数据的系统就是数据可管理系统（DBMS），数据库按存储类型主要分为：网状数据库、关系型数据库、树状数据库、面向对象数据库等。现在应用最为广泛的便是关系型数据库，下面以及以后我们都将学习关系型数据库。现在广泛应用的关系型数据库有：sql server、MySQL、Oracle、Access等等。虽然有如此之多的系统有我们选择，而且各有各的特点，各有各的差异、令我们不知道该学习哪个。但是俗话说万变不离其宗在我看来最然他们有差异，但是他们最基本的原理、思路是相同的，只要我们将基础学好了，那么在学习这些将会变的很容易！那么让我们开始进入SQL的世界吧！！
+         <h3 style="margin:0px;margin-top:5px;">2.&nbsp;&nbsp;概念</h3>
+     	
+        <h4>2.1&nbsp;&nbsp;什么是SQL</h4>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SQL:结构化查询语言，它是与关系型数据库进行通信的标准语言，第一个发布SQL产品的便是ORACLE-甲骨文公司。
+        <h4>2.2&nbsp;&nbsp;什么是数据库</h4>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库就是数据的集合，它不仅能够存储信息、而且能够以高效的方式检索其中的信息。比如电话簿就是一个数据库，我们不用考虑数据（联系信息）该放到哪，用到时该去哪找！我们只需要将数据提交给电话簿，它会帮我们管理数据存储数据，当我们需要查看某条数据时，只需要将想查的字段（比如：姓名）发给电话簿，电话簿就会自动检索，并把结果呈现给我们。
+        <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库必须被维护。比如你的联系人换了电话号码，或者不想在联系某个人，电话簿里的项目就需要删除或添加。
+         <h4>2.3&nbsp;&nbsp;什么是表</h4>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表示数据存储的表现形式，每个表可以分为更小的项，这些项被称为”字段“。一个字段就是表里的一列。比如学生信息表，姓名、学号都是表中的一个字段、一列。一条记录就是表里的一行，比如：yuanbinbin 124081001。
+         <h4>2.4&nbsp;&nbsp;什么是关系型数据库</h4>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关系型数据库由被称为表（table）的逻辑单元组成，这些表之间可以相互关联。我将以学生信息管理系统为例为大家解释。关系型数据库记录了学生信息、成绩信息以及课程信息。则该数据库有学生表、成绩表、以及课程表。关系是由各个表之间的关联所体现的。如：学生表与课程是多对多的关系(一个学生要学多门课程、一门课程可以由多个学生学习)。
+        <h3 style="margin:0px;margin-top:5px;">3.&nbsp;&nbsp;SQL的命令类型</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据数据库的功能，SQL可分为：数据定义（DDL）、数据操作（DML）、数据查询（DQL）、数据控制（DCL）、数据管理命令、事务控制命令。
+        <h4>3.1&nbsp;&nbsp;数据定义语言（DDL）</h4>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建数据库<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create database 数据库名。例如：create database stuinfodb;<br/><br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除数据库<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drop database 数据库名。例如：drop database stuinfodb;
+       <br/><br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建表<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create table [if not exists] stuinfo( //if not exists可不写<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id varchar , <br/>
+       	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name varchar ,<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;classid int,<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;primary key(id),//设置主键可不写。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreign key(classid) references classinfo);//设置外键classid为classinfo表的主键
+        <br/><br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改表<br/>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重命名表，从t1到t2: <br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t1 rename t2;<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改变表t2中的列a，从integer改为 varchar not null，并且改变列b，从char(10)改为char(20)，同时重命名它，从b改为c： <br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 modify a varchar not null,change b c char(20);<br/>
+        
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加一个新integer列，名为d： <br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alter table t2 add d integer; <br/>
+        
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在列d上增加一个索引，并且使列a为主键： (索引是不可修改的，想更改必须重建！！)<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 add index(d) , add primary key(a);<br/>
+        
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除索引： <br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 drop index d<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删出列c： <br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 drop column c;<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加一个新的AUTO_INCREMENT整数列，命名为c：<br/> 
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 add c int unsigned not null auto__increment;<br/><br/>
+        
+       
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除表<br/>
+        
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drop table if exists table_name;<br/><br/>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建视图<br/>
+        
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create view view_name as select statement<br/><br/> 
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除视图<br/>
+        
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drop view viewname;<br/><br/> 
+     
+     
+     	<h2>未完待续！敬请期待！</h2>
+     	<div style="margin:0 auto;width:480px;"><img src="../../images/leave.gif" /></div>
+    	 <h3 align="center">尊重原创，写博不易，转载请注</h3>
+     </p>
+</div>
+<div style="width:100%;height:120px;"><iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe></div>
+</body>
+</html>
