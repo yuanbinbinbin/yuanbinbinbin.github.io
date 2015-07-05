@@ -29,47 +29,71 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据数据库的功能，SQL可分为：数据定义（DDL）、数据操作（DML）、数据查询（DQL）、数据控制（DCL）、数据管理命令、事务控制命令。
         <h4>3.1&nbsp;&nbsp;数据定义语言（DDL）</h4>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建数据库<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create database 数据库名。例如：create database stuinfodb;<br/><br/>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除数据库<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drop database 数据库名。例如：drop database stuinfodb;
-       <br/><br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建表<br/>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create table [if not exists] stuinfo( //if not exists可不写<br/>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id varchar (n), <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除数据库<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drop database 数据库名。例如：drop database stuinfodb;
+		 
+		<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;显示数据库<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;show databases;<br/><br>
+		 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选择数据库<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use database_name;<br/><br>
+		  
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建表<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create table [if not exists] stuinfo( //if not exists可不写<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id varchar (n), <br/>
        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name varchar (n),<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;classid int,<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;primary key(id),//设置主键可不写。<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreign key(classid) references classinfo);//设置外键classid为classinfo表的主键
-        <br/><br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改表<br/>
+		
+		<br/><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;显示表结构<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方法1：desc table_name;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方法2：show columns from table_name;<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方法3：describe table_name;<br/><br/>
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改表<br/>
 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重命名表，从t1到t2: <br/>
         
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t1 rename t2;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t1 rename t2;<br/><br/>
         
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改变表t2中的列a，从integer改为 varchar not null，并且改变列b，从char(10)改为char(20)，同时重命名它，从b改为c： <br/>
         
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 modify a varchar not null,change b c char(20);<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 modify a varchar not null,change b c char(20);<br/><br/>
         
         
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加一个新integer列，名为d： <br/>
         
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alter table t2 add d integer; <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; alter table t2 add d integer; <br/><br/>
         
         
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在列d上增加一个索引，并且使列a为主键： (索引是不可修改的，想更改必须重建！！)<br/>
         
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 add index(d) , add primary key(a);<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 add index(d) , add primary key(a);<br/><br/>
+		
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;设置已存在列为主键，前提该表还没有主键<br/>
         
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table table_name add primary key(id);<br/><br/>
+		
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除主键<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table table_name drop primary key;<br/><br/>
+		
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除索引： <br/>
         
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 drop index d<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 drop index d<br/><br/>
         
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删出列c： <br/>
         
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 drop column c;<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 drop column c;<br/><br/>
         
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;增加一个新的AUTO_INCREMENT整数列，命名为c：<br/> 
         
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table t2 add c int unsigned not null auto__increment;<br/><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table table_name add c int primary key auto_increment;<br/><br/>
         
-       
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：在MySQL中，auto_increment只适用于主键，其他不是主键的字段不能设置自增属性。<br/><br/>
+		
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除c自增属性<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alter table modify c int;<br/><br/>
+		
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;删除表<br/>
         
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;drop table if exists table_name;<br/><br/>

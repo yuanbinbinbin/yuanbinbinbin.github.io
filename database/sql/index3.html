@@ -1,0 +1,146 @@
+<html>
+<head>
+<title> </title>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div style="width:800px;height:176px; margin:0 auto;"><iframe src="../../head.html" scrolling="no" style="height:190px;width:800px;height:170px;border:none;"></iframe></div>
+<div class="container">
+
+<h2>SQL基础&nbsp;&nbsp;三</h2>
+    <p>关键词： SQL , SELECT，DQL，查询</p>
+	<p style="font-size:14px; line-height:20px; letter-spacing:0px;">
+    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;今天我将介绍SQL命令类型中的数据查询语言（DQL），它是我们用到最多的部分，它的基本命令是SELECT，这个命令具有很多的选项和子句，用于构成对关系数据库的查询。
+        <h4>3.3&nbsp;&nbsp;数据查询语言（DQL）</h4>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查询是使用SELECT语句对数据库进行探究。比如我们想得到学生信息库里，所有姓袁的人，或者我们想得到计算机科学系的所有人的信息，这些都需要用到SELECT语句。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>SELECT语句</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECT语句里有4个关键字，分别为SELECT、FROM、WHERE、ORDER BY。SELECT语句跟的是我们想得到的信息字段，比如表t_stuinfo记录了学生的学号、姓名、性别、联系方式、班级，而我只想得到班级为1203班学生的姓名和联系方式，那我们只需要在SELECT后面继续写上姓名和联系方式的字段即可，字段之间要用逗号隔开。如果我们想得到学生的全部信息，在SELECT后面将全部字段写上或者写*。FROM后面跟的是若干个表名，例如上例我们只需要填写t_stuinfo即可。WHERE后面跟的是若干条件语句，它们之间用操作符AND或OR
+         连接，比如上例我们在WHERE后面添加class = 1203即可。综上我们就可以成功写出一条查询语句了。<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;获取1203班学生的姓名和联系方式。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select vch_stuName , vch_stuTell<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_stuinfo<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where int_class = 1203;<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：vch_stuName,vch_stuTell应当与数据库里的字段相同。<br/>
+       
+       
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;获取学号为101学生的姓名和各科学习成绩<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select vch_stuName , vch_courseName , flo_courseGrade<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_stuinfo,t_courseinfo,t_selcourse<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where t_stuinfo.int_stuId = 101 and t_selcourse.int_stuId = 101 and t_selcourse.int_courId = t_courseinfo.int_courId<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：这个例子查询涉及到了三个表，由于三个表里有的字段相同，故用‘表名.字段名’来区分如：t_stuinfo.int_stuId。<br/>
+       
+       
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>ORDER BY子句</h3>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们一般需要让输出以某种方式进行排序，ORDER BY 能够以用户指定的列表格式对查询结果进行排序。ORDER BY子句的默认次序是升序，也就是说，如果对输出字符排序，输出的结果将按A-Z的顺序输出。DESC降序，ASC升序。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：获取1203班学生的学号、姓名和联系方式并按学号降序（升序）排序。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select int_stuid , vch_stuName , vch_stuTell<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_stuinfo<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where class = 1203<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;order by int_stuid  DESC(ASC)<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：SQL排序是基于字符的ASCII排序的。数字0-9会按其字符值进行排序，并且位于字母A-Z之前。由于数字值在排序时是被当做字符处理的，所以下面数字的升序排序时这样的：1,110,111,12,2,20,22,3,4,5<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ORDER BY子句里可以用数字来代替字段值。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例如stuinfo表里字段从左到右的顺序为：int_stuid、vch_stuName、vch_stuTell。则在查询时，可以用1替代int_stu_id、2替代vch_stuName、3替代vch_stuTell。<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ORDER BY子句里可以对多个字段进行排序，这时可以使用字段名或整数，字段名或数字之间用逗号隔开。数据库会按最左边第一个字段进行排序如果有相同的，则按第二个字段的排序规则进行排序。以此类推。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：查询课程id为8023的学生的信息，并按成绩降序，学号升序的排序规则进行排序。<br/> 							        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select int_stuid , flo_grade<br/>  
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;form t_selcourse<br/>   
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where int_courseid = 8023<br/> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;order by flo_grade DESC , int_stuid ASC<br/>       
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解释：数据库先按成绩排序，如果有学生的成绩相同，则按学号进行排序。<br/> 
+        
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>大小写敏感性</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MySql和Microsoft SQL Server 默认是大小写不敏感的，Oracle，默认是大小写敏感的。也就是在MYSQL和SQL Server 数据库中在进行数据匹配时会忽视大小写，而Oracle不会忽视大小写。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：假如数据库里存储的数据为Alies，在MYSQL和SQL Server能够匹配用‘alies’匹配到Alies，而在Oracle中则不能。<br/>
+
+       
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>COUNT的使用</h3>
+        
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;利用count可以得到所要查询结果的条数或数量。<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select count(*)<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from table_name<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count函数使用一对圆括号来指定目标字段，或是一个星号表示表里的全部记录。<br/>         
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：查询课程号为8023成绩大于90的人数。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select count(*)<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_selcourse<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where flo_grade > 90;<br/>
+        
+      
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>使用字段别名</h3>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当我们进行查询操作时，我们会看到查询结果的第一行分别显示了字段名，如果我们不想看字段名，因为他太抽象了，而是想看汉字什么的，那这时就要用到字段别名了。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select column_name alias_name<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from table_name<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：查询全部学生姓名，并用姓名替换字段名<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select stuname 姓名<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_stuinfo<br/> 
+        
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>比较操作符</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相等       符号：‘=’ <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不相等     符号： ‘!=’ <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大于       符号： ‘>‘<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小于       符号： ’<‘<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大于等于    符号： ’>=‘<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;小于等于    符号： ’<='<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>逻辑操作符</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IS NULL <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个操作符用于与NULL值比较。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例如：查找未分班的学生信息。<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select *<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frome t_stuinfo<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where int_class IS NULL;<br/><br/>
+        
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BETWEEN<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;between用于查询位于给定的最大值和最小值之间的值，并别包含最大值和最小值。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例如：查找课程id为8023成绩在80-90的学生信息。<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select *<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frome t_selcourse<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where flo_grade between 80 and 90;<br/><br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IN<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作符IN用于把一个值与一个指定列表进行比较，当被比较的值至少与列表中的一个值相匹配时，则返回TRUE。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例如：查血课程id为8023成绩为70或80或90或100的学生信息。<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select *<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frome t_selcourse<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where flo_grade in (70,80,90,100);<br/><br/>
+        
+       
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LIKE<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作符LIKE利用统配符把一个值与类似的值相匹配。通配符有两个：<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;百分号（%） 代表零个、一个或多个字符<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下划线（_） 代表一个数字或字符<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例如：查姓袁的学生信息。<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select *<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frome t_stuinfo<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where var_stuName Like '袁%';<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：匹配以2开头，而且长度至少为3的值：<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where column_name like '2_%_%'<br/><br/>
+         
+         
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXISTS<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个操作符用于指定表里是否存在满足特定条件的记录。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例如：查询课程id为8023，是否存在成绩为100的学生<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select *<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;frome t_selcourse<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where exists(<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select *<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_selcourse<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where flo_grade = 100;<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解释：若存在考100分的学生，则输出学生的信息。<br/><br/>
+      
+     	<h2>未完待续！敬请期待！</h2>
+     	<div style="margin:0 auto;width:480px;"><img src="../../images/leave.gif" /></div>
+    	 <h3 align="center">尊重原创，写博不易，转载请注</h3>
+     </p>
+</div>
+<div style="width:100%;height:120px;"><iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe></div>
+</body>
+</html>
