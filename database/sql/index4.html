@@ -1,0 +1,161 @@
+<html>
+<head>
+<title> </title>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div style="width:800px;height:176px; margin:0 auto;"><iframe src="../../head.html" scrolling="no" style="height:190px;width:800px;height:170px;border:none;"></iframe></div>
+<div class="container">
+
+<h2>SQL基础&nbsp;&nbsp;四</h2>
+    <p>关键词：SUM , MAX，MIN，AVG,DISTINCT,GROUP BY</p>
+	<p style="font-size:14px; line-height:20px; letter-spacing:0px;">
+    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;今天我将继续介绍SQL命令类型中的数据查询语言（DQL），将介绍如何把查询的数据划分为组来提高可读性。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>COUNT函数</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count函数用于统计不包含NULL值的记录或字段，它可以与DISTINCT命令一起使用，从而统计数据集里不同的记录数量。count（*）会统计表里的全部记录数量，包括重复的，也不管是否包含NULL值。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：统计不同姓名的学生的个数。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select count(ditinct vchStuName)<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_stuinfo<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：DISTINCT命令不能与COUNT（*）一起使用。<br/>
+      
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>SUM函数</h3>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUM函数返回一组记录中某一个字段值的总和。它也可以与DISTINCT一起使用，这时只会计算不同记录之和。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：计算不同学费的总和。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select SUM（ditinct intCost）<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_stuinfo<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：sum函数只处理数值型，不能用于其他类型。<br/>
+       
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>AVG函数</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AVG函数可以计算一组指定记录的平均值。与DISTINCT一起使用时，它返回不重复记录的平均值。<br/>
+         
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：返回不同薪水的平均值。<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select AVG(distinct salary)<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_employee<br/>
+        
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count函数使用一对圆括号来指定目标字段，或是一个星号表示表里的全部记录。<br/>         
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：查询课程号为8023成绩大于90的人数。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select count(*)<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_selcourse<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where flo_grade > 90;<br/>
+        
+      
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>使用字段别名</h3>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当我们进行查询操作时，我们会看到查询结果的第一行分别显示了字段名，如果我们不想看字段名，因为他太抽象了，而是想看汉字什么的，那这时就要用到字段别名了。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select column_name alias_name<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from table_name<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：查询全部学生姓名，并用姓名替换字段名<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select stuname 姓名<br/>
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_stuinfo<br/> 
+        
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>MAX与MIN函数</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MAX函数返回记录中某个字段的最大值，MIN函数返回记录中某个字段的最小值。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：查看成绩编号为8010的课程的最高（最低）成绩。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select max(floGrade)或min(floGrade)<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from course<br/>
+        
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>GROUP BY子句</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY 子句与SELECT语句配合，可以把相同的数据划分为组。所谓的分组就是把一个数据集划分为若干个小区域。GROUP BY子句在WHERE子句之后，在ORDER BY之前。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例1：获取1203班学生不同籍贯的人数<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select vchCity , count(*)<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_stuInfo<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;group by varCity;<br/>
+        <pre>
+    例2：获取数据库中每种动物的数量
+    SELECT species, COUNT(*) 
+    FROM pet 
+    GROUP BY species;
+    
+    +---------+----------+
+    | species | COUNT(*) |
+    +---------+----------+
+    | bird    |        2 |
+    | cat     |        2 |
+    | dog     |        3 |
+    | hamster |        1 |
+    | snake   |        1 |
+    +---------+----------+
+    
+    例3：每中性别的动物数量： 
+    
+    SELECT sex, COUNT(*) 
+    FROM pet 
+    GROUP BY sex;
+    +------+----------+
+    | sex  | COUNT(*) |
+    +------+----------+
+    | NULL |        1 |
+    | f    |        4 |
+    | m    |        4 |
+    +------+----------+
+   （在这个输出中，NULL表示“未知性别”。）
+	
+    例4：按种类和性别组合的动物数量： 
+
+    SELECT species, sex, COUNT(*) 
+    FROM pet 
+    GROUP BY species, sex;
+    +---------+------+----------+
+    | species | sex  | COUNT(*) |
+    +---------+------+----------+
+    | bird    | NULL |        1 |
+    | bird    | f    |        1 |
+    | cat     | f    |        1 |
+    | cat     | m    |        1 |
+    | dog     | f    |        1 |
+    | dog     | m    |        2 |
+    | hamster | f    |        1 |
+    | snake   | m    |        1 |
+    +---------+------+----------+
+    例5：只查询猫狗的性别的数量。
+	SELECT species, sex, COUNT(*) 
+    FROM pet
+    WHERE species = "dog" OR species = "cat"
+    GROUP BY species, sex;
+    +---------+------+----------+
+    | species | sex  | COUNT(*) |
+    +---------+------+----------+
+    | cat     | f    |        1 |
+    | cat     | m    |        1 |
+    | dog     | f    |        1 |
+    | dog     | m    |        2 |
+    +---------+------+----------+
+        </pre>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h3>HAVING 子句</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;having 子句在SELECT语句里与group by子句联合使用时，可以告诉group by子句在输出力包含哪些分组。having子句往往位于group by子句的后面，order by子句的前面。<br/>
+       
+      
+        
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY 、 ORDER BY 、 HAVING<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY 与 ORDER BY 的相同之处在于它们都是对数据进行排序，ORDER BY子句专门用于对查询得到的数据进行排序，GROUP BY子句也把查询得到的数据排序为适当分组数据。两者的区别是：order by 可以理解为行的排序，order by 后面必须列出排序的字段名。GROUP BY 是分组的意思，必须和“聚合函数”配合使用。当我们用GROUP BY进行分组后，如何对分组进行筛选呢？having就是解决这个问题的，假如要求平均价格在3.0以上的水果。如果我们使用下面的语句是否会成功呢？<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select vch_fruitName,avg(flo_price) from t_fruit where avg(flo_price)>=3<br/>
+        
+         
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答案是否定的，因为where里不能使用聚合函数，这样子你就知道having的用处了吧！<br/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正确写法：select vch_fruitName , avg(flo_price) from t_fruit group by name having avg(flo_price);<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：GROUP BY 子句可用于 CREATE VIEW 语句里进行排序，而ORDER BY子句不行！！
+         
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：查询除了石家庄之外，所有城市的平均工作小时和薪水，并且薪水超过20000的分组，结果按CITY进行分组,并按平均薪水进行降序排序。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select city , avg(flo_workTime) , avg(salary)<br/>
+      	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from t_pay<br/>
+     	 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where city != '石家庄'<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;group by city<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;having avg(salary) > 2000<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;order by avg(salary) DESC;<br/>
+     	<h2>未完待续！敬请期待！</h2>
+     	<div style="margin:0 auto;width:480px;"><img src="../../images/leave.gif" /></div>
+    	 <h3 align="center">尊重原创，写博不易，转载请注</h3>
+     </p>
+</div>
+<div style="width:100%;height:120px;"><iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe></div>
+</body>
+</html>
