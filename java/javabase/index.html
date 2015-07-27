@@ -1,0 +1,155 @@
+<html>
+<head>
+<title> </title>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div style="width:800px;height:176px; margin:0 auto;"><iframe src="../../head.html" scrolling="no" style="height:190px;width:800px;height:170px;border:none;"></iframe></div>
+<div class="container">
+	<h2>Java基础&nbsp;&nbsp;一</h2>
+    <p>关键词： Java 基础，Java入门</p>
+    <p style="font-size:14px; line-height:20px; letter-spacing:0px;">
+    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前段时间呢，binge投了几份简历，应聘了几家公司，突然发现自己的Java基础怎会如此的渣！！不能忍了啊！！！So！Today,binge将和大家一起温习Java的基础，希望对大家有所帮助！！！Let's Go！(*^__^*) ！！<br/>
+        <h3 style="margin:0px;">1.&nbsp;&nbsp;JDK、JRE、JVM</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JDK （Java Develop Kit） Java开发工具包<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JDK是整个JAVA的核心，它提供了编译、调试和运行一个Java程序所需的所有工具，可执行文件和二进制文件。它包含了jre与jvm。<br/><br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JRE （Java Runtime Environment）Java运行环境<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;包括了JVM和Java程序所需的核心类库等，如果想要运行一个已经开发好的Java程序，计算机必须安装JRE。<br/><br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JVM	（Java Virtual Machine）Java虚拟机<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JVM是JRE的一部分，是虚构出来的计算机，它的主要工作是解释Java的指令集并映射到本地的CPU的指令集。<br/><br/>
+	
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;三者之间的关系：我们利用JDK开发JAVA程序，通过JDK中的编译程序将JAVA文件编译成.class文件，在JRE上运行这些JAVA字节码，JVM解析这些字节码，映射到CPU指令集或OS的系统调用。<br/>
+		 <h3 style="margin:0px;">2.&nbsp;&nbsp;基础概念</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;面向对象：对象是由数据和容许的操作组成的封装体，与客观实体有直接对应关系，一个对象类定义了具有相似性质的一组对象。<br/><br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;封装：封装代码、模块、或其他内容，为了方便调用，调用者不用管里面的具体事务。<br/><br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;继承：由已有类创建新类的机制。新类继承已有类的成员，并可根据需要增加自己新的属性或覆盖父类属性。好处：使得复用以前的代码非常容易，代码重用，大大缩短开发周期，降低开发费用。<br/><br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多态：指允许不同类的对象对同一消息做出响应。即同一消息可以根据发送对象的不同而采用多种不同的行为方式。（发送消息就是函数调用），也就是说在程序中同一符号或名字在不同情况下具有不同解释的现象。<br/><br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;抽象：抽象就是忽略一个主题中与当前目标无关的那些方面，以便更充分地注意与当前目标有关的方面。<br/>
+         <h3 style="margin:0px;">3.&nbsp;&nbsp;标识符的书写</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标识符：java中的包、类、方法、参数、变量等的名字<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由大小写字母、数字、下划线、美元$组成，但不能以数字开头。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 不能是Java中的关键字。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 这里的字母也包括世界上任何国家的“字母表”中的字符，比如汉字、日文等。不建议使用。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 例：Inner$1、123、java hello、user_name、user-name<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	关键字全部小写<br/>
+         <h3 style="margin:0px;">4.&nbsp;&nbsp;数据类型概述</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JAVA是强类型语言必须明确定义其数据类型，然后才能使用。Java的基本数据类型有8个<br/>
+          整数：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte：8        字节型  -128~127  默认值：0<br/>
+	     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;short：16		 短整型  -32768~32767(-2^15~2^15-1) 3万  默认值：0<br/>
+	     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int：32        整型	 -2147483648~2147483647（-2^31~2^31-1）2十亿 默认值：0<br/>
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long：64       长整型  -9223372036854775808~9223372036854775807（-2^63~2^63-1）9万亿亿   默认值：0<br/>
+		 浮点：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float：32		 单精度浮点型 用1位表示数字符号，8位表示指数（2为底数），用23位表示尾数。 默认值：0.0f<br/>
+	    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double：64	 双精度浮点型 用1位表示数字符号，11位表示指数（2为底数），用52位表示尾数。 默认值：0.0D<br/>
+		 字符：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char：16       字符型    0~65535（0~2^16-1）默认值：null<br/>
+	 	  逻辑：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean：1     布尔型    默认值：false 注意：在C语言中允许将数字值转换成逻辑值（true为1false为0），但在Java编程语言中是不允许的。<br/><br/>
+          
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;整型（byte、int、short、long）Java语言中的整数类型都是带符号的数字，不存在无符号整数。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;十进制：正常书写<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;八进制：以数字0（零）开头<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;十六进制：以0（零）x或0（零）X开头<br/><br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浮点型（float、double）<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java语言将默认的浮点数的精度规定为double！！<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;也就是不能这样书写：float f = 1.2；这是不正确的原因如上<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正确写法：float f = 1.2f；或float f = （float）1.2；<br/><br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;字符型（char）<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java采用Unicode字符集的编码方案，占用2个字节，所以char不仅能够存储平常字符而且能够存储汉字！但是如果有些特殊字符没有被包含在Unicode编码字符集中，则不能存储这些特殊字符。<br/>
+         
+		 <h3 style="margin:0px;">4.&nbsp;&nbsp;类型转换</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将一种数据类型的常量或变量转换到另外的一种数据类型。<br/><br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宽转换（占用位数较短的数据转化成占用位数较长的数据，如：int转向long、byte转向int）<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.有符号数宽转换时进行符号位扩展。char是无符号数因此是0扩展。如int i = （char）（byte）-1；i的值为65535.<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.int转换到float或long转换到double时，很可能造成精度丢失。如int big = 1234567891；float f = big； f中小数点之后已不精确表示891了.<br/><br/>
+
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;窄转换（占用位数较长的数据转化成占用位数较短的数据）<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int转换到byte时，会丢弃int的高3个字节，将最低的1个字节放入byte中。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char转换到short时，很有可能由正数变成一个负数。<br/>
+		 <h3 style="margin:0px;">&nbsp;&nbsp;思考：</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;short a,b,c;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = 2;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = 3;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = a+b;<br/>
+	     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上面的代码是错误的！！！<br/>
+
+
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原因：<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java在执行算术运算时，“比int小”的两个数据（char、byte、short）在正式执行运算之前，那些值会自动转换成int，这样一来，最终生成的值就是int类型，所以上面的代码会报错。<br/>
+	
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;short a,b,c;<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a = 2;<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b = a++; //部分一<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = ++a; //部分二<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上面的代码是正确的！！！<br/>
+
+
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原因：<br/>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;部分一正确的原因是，b = a++；可拆分为b=a；a+=1;故是正确的。<br/>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;部分二正确的原因是，c = ++a；可拆分为a+=1；c=a；故是正确的。<br/>
+		<h3 style="margin:0px;">5.&nbsp;&nbsp;this</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this :只能用在实例方法和构造方法中,代表当前对象，谁调用谁就是当前对象。<br/>
+        <h3 style="margin:0px;">6.&nbsp;&nbsp;Java的内存分配</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java把内存划分成两种：栈内存、堆内存。栈内存存放引用变量的数据地址，堆内存存放引用变量的数据地址。对于基本数据类型来说，当基本数据类型为局部变量时存放在栈内存中，当为全局变量时存放在堆内存中。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Person p; //声明对象p，在栈内存中分配空间，用来存放一个地址，此时地址未指向任何数据。</br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p = new Person(); //首先在堆内存中为对象分
+配存储空间，并对各成员变量进行初始化，数值型为0，布尔型为false，引用型为null，然后取得这个存储空间的地址（引用），
+		将其交给引用变量p（即将地址放入栈内存中），以后对这个对象的操作全由p去控制。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</br/>
+         <h3 style="margin:0px;">7.&nbsp;&nbsp;构造方法</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;构造方法没有返回类型<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当你不写构造方法时，系统会自动创建一个无参的构造方法。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当你写了构造方法后，系统将不会再自动创建无参的构造方法。<br/>
+         <h3 style="margin:0px;">8.&nbsp;&nbsp;方法的重载</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方法的重载：方法名相同，参数个数或者类型不同。修饰符，返回类型不会影响方法的重载。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：<br/>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public void aaa（）<br/>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    System.out.prinyln("aaa1");<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br/>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  public void aaa（String a1）<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br/>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      System.out.prinyln("aaa2");<br/>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  }<br/>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  protected void aaa（String a3） //写法错误！编译器会报错<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       System.out.prinyln("aaa3");<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   }	<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   void aaa（String a4）//写法错误！编译器会报错！！<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       System.out.prinyln("aaa4");<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   }	<br/>
+          <h3 style="margin:0px;">9.&nbsp;&nbsp;static关键字</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;静态变量/静态方法：对于成员变量/成员方法的声明，可以在类型的前面加修饰符“static”，称之为静态变量/静态方法。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类变量/类方法和实例变量/实例方法：静态变量/静态方法属于类而不属于类的某个实例，可直接由类名来调用（类名·变量名/类名·方法名），因此也叫类变量/类方法；<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非静态的成员变量/方法（即实例变量和实例方法）必须实例化后通过对象名来调用（对象名·变量名/对象名·方法），因此称为实例变量/实例方法。<br/>
+	 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;说明：类变量和类方法也可以通过实例调用。<br/><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=" font-size:25px;">类变量/类方法 和 实例变量和实例方法</span><br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类变量，它属于类所有，且在所有的实例中都共享同一个内存空间；<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实例变量，对于每一个实例，这个变量都拥有独自的内存空间。<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类方法，在类加载时分配方法入口地址，因此可被类直接调用。<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实例方法，只有创建类的对象，才会分配方法入口地址，并只能通过对象调用方法。<br/>
+        <h3 style="margin:0px;">10.&nbsp;&nbsp;包的概念</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了便于管理大型软件系统中数目众多的类，解决类命名冲突的问题。<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java中的包与文件系统的目录层次结构是一 一对应的。<br/>
+        <h3 style="margin:0px;">11.&nbsp;&nbsp;访问修饰符</h3>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;访问修饰符可以修饰类，成员变量、成员方法，不能修饰局部变量。<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public：全局使用，访问权限最大，当前项目下都可以访问。<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;protected：比default高一级，比public低一级， 同包可以使用以及不同包的子类使用。<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default：只能被同类或同包中的不同类访问，比private高一级。 <br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private：仅本类使用。<br/><br/>
+
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类可以使用的修饰符：public、default（只能被同包里的类使用 ）<br/>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size:25px;">注意！</span>一个Java文件只能有并且必须有一个与文件名相同的public类，但是可以有无数个default类（只能被同包类使用）。 <br/>
+        <h2>未完待续！敬请期待！</h2>
+     	<div style="margin:0 auto;width:480px;"><img src="../../images/leave.gif" /></div>
+    	 <h3 align="center">尊重原创，写博不易，转载请注</h3>
+    </p>
+</div>
+<div style="width:100%;height:120px;"><iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe></div>
+</body>
+</html>
