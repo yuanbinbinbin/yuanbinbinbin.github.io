@@ -7,8 +7,14 @@ body{
 	width:780px;
 	font-size:15px;
 	line-height:25px;}
+
 a.a1:link{
 	color:#fff;
-	text-decoration:none;}
-a.a1:visited{color:#fff;}
-a.a1:hover{color:#CCC}
+
+	}
+a.a1:hover{
+			text-decoration:none;
+	}
+a.a1:visited{
+	color:#fff;}
+

@@ -1,0 +1,151 @@
+<html>
+<head>
+<title> </title>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div style="width:800px;height:176px; margin:0 auto;"><iframe src="../../head.html" scrolling="no" style="height:190px;width:800px;height:170px;border:none;"></iframe></div>
+<div class="container">
+	<h2>Java基础&nbsp;&nbsp;二</h2>
+    <p>关键词： 继承，super ，final，上转型，下转型，多态，instanceof，接口</p>
+    <p style="font-size:14px; line-height:20px; letter-spacing:0px;">
+    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;昨天我们温习了Java基础的一部分，是不是有点收获呢？反正binge收获颇丰，那你呢？今天binge将和大家继续一起温习Java的基础，希望对大家有所帮助！！！Let's Go！(*^__^*) ！！<br/>
+        <h3 style="margin:0px;">1.&nbsp;&nbsp;类的继承</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;继承：由已有类创建新类的机制。新类继承已有类的成员，并可根据需要增加自己新的属性或覆盖父类属性，已有类称为父类，新类称为已有类的子类。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：Java不支持多继承，一个子类只能有一个父类，但一个父类可以派生出若干个子类。<br/><br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;继承的特性<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子类和父类在同一包中子类可继承其父类中非私有成员（不是private的成员）<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子类和父类不在同一包中子类只能继承受保护的和共有成员（public、protected）<br/><br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成员变量的隐藏和方法的重写<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前提：有继承关系。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;说明：子类对父类中的成员变量的隐藏以及对父类中的方法的重写。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成员变量的隐藏：如果在子类中定义了与父类中同名的变量，父类的这个变量将被隐藏。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;方法的重写：如果子类中定义了与父类同名、同类型、相同参数的方法，则称子类覆盖了父类的方法。<br/>
+		 <h3 style="margin:0px;">2.&nbsp;&nbsp;super 关键词</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用：<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过super关键字调用父类的属性和方法，包括被隐藏的。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super（）调用父类构造方法。会默认在子类的构造方法第一行添加。他只能放在第一行，如果放到其他行会报错。<br/><br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 注意：<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 如果父类自定义了构造方法并且没有定义默认的构造方法，则子类必须在构造方法的第一行调用与父类一致的super（）方法。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public class Father{<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;protected String xingShi；<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public Father(String xingShi){<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.xingShi = xingShi;<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public class Child{<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private String name;<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public Child(String xingShi){<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super(singShi);<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/><br/>
+         
+         <h3 style="margin:0px;">3.&nbsp;&nbsp;final关键词</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可修饰类、方法、变量。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修饰类：不能派生子类，也就是不能被继承。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修饰变量： 其值不能在程序运行过程中改变，是一个常量。声明变量时必须要有初始值。<br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修饰方法：不能被子类重写。<br/><br/>
+
+
+         <h3 style="margin:0px;">4.&nbsp;&nbsp;对象的上转型</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定义：对象既可以作为它本身的类型使用也可以作为它的基类型使用。这种把对某个对象的引用视为对其基类型的引用的做法叫向上转型。例：B类是A类的子类或间接子类，当子类B创建一个对象，并把这个对象赋给类A的引用变量a，则称这个A类对象a是子类B的向上转型的对象。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代码表现：<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class A{}<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class B extends A{<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public string x;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A a = new B();<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br/><br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特点：<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.  向上转型的对象不能操作子类新增的成员属性或方法。如：a不能操作属性x。 <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 向上转型对象可以操作子类继承或隐藏的成员变量，也可以使用子类继承的或重写的方法。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 向上转型对象操作子类继承或重写的方法时，就是通知对应的子类对象去调用这些方法，因此，如果子类重写了父类的某个方法后，对象的向上转型对象调用这个方法时，一定是调用了这个重写的方法。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.可以将向上转型对象在强制转换到它本来的类型，该对象又具备了其所有的属性和方法。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. 向上转型的对象可以操作的变量永远是自身的变量，不管子类有没有继承或重写。可以操作的方法是如果子类有继承或重写方法则使用子类的，否则调用自身的。<br/>
+
+          
+    
+		<h3 style="margin:0px;">5.&nbsp;&nbsp;对象的下转型</h3>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;定义：将基类型对象强制转化为子类型对象叫做对象的下转型。例：B类是A类的子类或间接子类，当基类A创建一个对象，并把这个对象强制类型转为类B的引用变量。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;代码表现：<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class A{}<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class B extends A{<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public String x;<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B b = (B)new A();<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br/>
+          
+          
+          
+        <h3 style="margin:0px;">6.&nbsp;&nbsp;多态</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在程序中同一符号或名字在不同情况下具有不同解释的现象称为多态性。<br/><br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多态的表现<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 方法多态（方法重载）<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 对象多态（对象的转型）<br/><br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多态不仅能够改善代码的组织结构和可读性，还能创建可以扩展的程序，消除类型之间的耦合关系。<br/>
+
+          
+         <h3 style="margin:0px;">7.&nbsp;&nbsp;instanceof关键字</h3>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类型判断，可以判断一个引用变量所指向的对象是否属于某个类。  <br/><br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;语法：对象名 instanceof 类型名 <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实例：s instanceof student    <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;含义： 判断变量s是否为student类型，若是则为true，否则为false<br/>
+         
+         
+         
+         <h3 style="margin:0px;">8.&nbsp;&nbsp;抽象方法与抽象类</h3>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;抽象类：用关键字abstract修饰的类就是抽象类。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;抽象方法：用关键字abstract修饰的方法，且没有方法体（没有中括号{}）的方法就是抽象方法<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;抽象类的意义:专做与父类，用来定义规范， 既可以定义抽象方法也可以定义非抽象方法，但是抽象方法只能定义在抽象类中。<br/><br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为什么要使用抽象类？<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对于一个父类，如果它的某个方法在父类中实现出来没有任何意义，必须根据子类的实际需求来进行不同的实现，那么就可以将这个方法声明为abstract方法，此时这个类也就成为abstract类了。
+<br/><br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;抽象类不能实例化（直接创建对象）。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override 实现<br/>
+         
+          
+          <h3 style="margin:0px;">9.&nbsp;&nbsp;接口interface</h3>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果一个抽象类中所有的方法都是抽象的，就可以将这个类用另外一种方式来定义，也就是接口定义。<br/><br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为什么使用接口？<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1、Java中不允许类的多继承，但在解决实际问题过程中，仅仅依靠单一继承在很多情况下都不能将问题的复杂性表述完整。通过接口可以实现多继承。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 如：Father类有playFootball()，Mother类有sing()，如果采用类的继承来产生一个Son类，则它只能从一个类中继承。要么继承Father，要么继承Mother。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2、接口在面向对象的设计与编程中应用非常广泛，特别是实现软件模块间的连接方面有着巨大的优势。<br/><br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、interface是接口的关键词，定义接口和定义类相似。并被编译为class文件。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、接口的访问控制符只有public和默认，如果使用public修饰符，则可以被所有类和接口使用，且接口名与文件名相同。如果不使用public，则接口只能被同一个包中的类和接口使用。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、接口中所有的方法默认且必须都是public abstract 即公共的抽象方法。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、接口中可以有数据成员，这些数据成员默认且必须都是public static final即公共类常量。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5、接口和实现类之间的关系实质上是继承的关系。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6、接口可以继承其他若干接口使用的关键词为extends<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7、类实现接口关键词implements<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8、类可以实现多个接口的同时，也可以继承一个父类。<br/><br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接口与抽象类的区别 <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、抽象类是对一种事物的抽象包括属性和行为而接口是对行为的抽象。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、抽象作为很多子类的父类，它是一种模板式设计，而接口时一种行为规范。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、抽象类里可以有构造方法但接口不可以有。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4、抽象类中可以有普通成员变量，而接口只能有public static final公共类常量。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5、接口中只能定义抽象方法，抽象类既可以定义抽象方法也可以有方法的具体实现。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6、一个子类只能继承一个抽象类，但可以实现多个接口。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7、抽象类只能继承一个抽象类，但是接口可以继承多个接口。<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8、抽象类可以含有静态代码块以及静态方法，而接口是不能含有的。<br/><br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为什么类可以实现多个接口而不可以继承多个类？<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不可以多继承类是因为抽象类中可以含有非抽象方法造成的！
+    <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;假如子类可以多继承，如果类A，类B都含有同名的非抽象方法voice（）但有不同的实现，当类C同时继承A、B时，当调用voice方法时，将会出现二义性！到底是调用类A的voice方法呢，还是调用类B的voice方法呢！<br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而接口中的成员均为常量和抽象方法，抽象方法必须要由子类实现的，所以即使不同接口存在同名抽象方法，并不会造成二义性的结果。所以可以实现多个接口。<br/>
+
+        <h2>未完待续！敬请期待！</h2>
+     	<div style="margin:0 auto;width:480px;"><img src="../../images/leave.gif" /></div>
+    	 <h3 align="center">尊重原创，写博不易，转载请注</h3>
+    </p>
+</div>
+<div style="width:100%;height:120px;"><iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe></div>
+</body>
+</html>
