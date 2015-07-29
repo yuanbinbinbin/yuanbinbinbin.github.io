@@ -13,11 +13,17 @@
     	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前段时间呢，binge投了几份简历，应聘了几家公司，突然发现自己的Java基础怎会如此的渣！！不能忍了啊！！！So！Today,binge将和大家一起温习Java的基础，希望对大家有所帮助！！！Let's Go！(*^__^*) ！！<br/>
         <h3 style="margin:0px;">1.&nbsp;&nbsp;JDK、JRE、JVM</h3>
          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JDK （Java Develop Kit） Java开发工具包<br/>
-         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JDK是整个JAVA的核心，它提供了编译、调试和运行一个Java程序所需的所有工具，可执行文件和二进制文件。它包含了jre与jvm。<br/><br/>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JDK是整个JAVA的核心，它提供了编译、调试和运行一个Java程序所需的所有工具，可执行文件和二进制文件。其实JDK的工具也是Java程序，也需要JRE才能运行，它包含了jre与jvm。<br/><br/>
 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JRE （Java Runtime Environment）Java运行环境<br/>
 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;包括了JVM和Java程序所需的核心类库等，如果想要运行一个已经开发好的Java程序，计算机必须安装JRE。<br/><br/>
 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JVM	（Java Virtual Machine）Java虚拟机<br/>
-		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JVM是JRE的一部分，是虚构出来的计算机，它的主要工作是解释Java的指令集并映射到本地的CPU的指令集。<br/><br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JVM是JRE的一部分，是虚构出来的计算机，它的主要工作是解释Java的指令集并映射到本地的CPU的指令集，也就是说JVM将每一条指令翻译成不同平台机器码。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JVM包括一套字节码指令集、一组寄存器、一个栈、一个垃圾回收堆和一个存储方法域。<br/><br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JVM的生命周期:JVM实例对应了一个独立运行的Java程序。它是进程级别。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）启动。启动一个Java程序时，一个JVM的实例就产生了，任何一个拥有 public static void main （String[] args）主方法的class都可以作为JVM实例运行的起点。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）运行。main（）方法是程序主线程的起点，任何其他线程均有该线程产生。JVM内部有两种线程：<a class="a2" href="../shouhuxiancheng/index.html">守护线程和非守护线程</a>，main （）方法属于非守护线程，守护线程通常由JVM自己使用，Java程序也可以定义自己创建的线程为守护线程。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）消亡。当程序中的所有非守护线程都终止时，JVM才退出。程序也可以使用runtime类或system.exit（）来退出。<br/>
+		 <br/>
 	
 		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;三者之间的关系：我们利用JDK开发JAVA程序，通过JDK中的编译程序将JAVA文件编译成.class文件，在JRE上运行这些JAVA字节码，JVM解析这些字节码，映射到CPU指令集或OS的系统调用。<br/>
 		 <h3 style="margin:0px;">2.&nbsp;&nbsp;基础概念</h3>
