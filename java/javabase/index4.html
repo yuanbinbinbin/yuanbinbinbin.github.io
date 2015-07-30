@@ -1,0 +1,202 @@
+<html>
+<head>
+<title> </title>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div style="width:800px;height:176px; margin:0 auto;"><iframe src="../../head.html" scrolling="no" style="height:190px;width:800px;height:170px;border:none;"></iframe></div>
+<div class="container">
+	<h2>Java基础&nbsp;&nbsp;四</h2>
+    <p>关键词： 包装类，Object类 ，String类，==与equals的区别，StringBuffer类，StringBuilder类</p>
+    <p style="font-size:14px; line-height:20px; letter-spacing:0px;">
+    	
+        <h3 style="margin:0px;">1.&nbsp;&nbsp;java 8个基本类型的包装类</h3>
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 大家都知道Java有8个基本类型（boolean、byte、short、int、long、float、double、char），Java是面向对象的编程语言，但这8个基本数据类型是不支持面向对象的编程机制的，即基本类型没属性、方法可以被调用。
+    有时某个方法需要object类型的参数，但实际需要的值却是2、3等数值，基本数据类型就不能满足这种条件了。Java为了解决8个基本数据类型的变量不能当成object类型变量使用的问题，Java为这8个基本类型提供了对应的包装类，通过这些包装类可以把8个基本类型的值包装成对象使用。<br/>
+		 <br/>8个基本数据类型和包装类之间的对应<br/>
+		&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基本数据类型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;包装类<br/>
+		&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Byte<br/>
+		&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;short&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Short<br/>
+		&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer [ˈɪntɪdʒɚ]     <br/>
+		&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;long&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Long<br/>
+		&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Character<br/>
+		&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Float<br/>
+		&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Double<br/>
+		&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Boolean<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8个基本类型对应的包装类都是首字母大写。<br/><br/>
+		 基本类型与对应的包装类之间的转换<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例： int-->Integer<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int i = 1;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//     Integer in = new Integer(i);     //通过Integer构造器将基本类型转换成包装类对象<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//     Integer in = i;          //从JDK1.5开始，JDK提供了自动装箱和自动拆箱共能，自动装箱：基本类型变量直接赋值给对应的包装类变量。自动拆箱：包装类对象直接赋值给对应的基本类型变量。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//     Integer in = Integer.valueOf(i);     //通过Integer提供的静态方法将基本类型变量转换成对应的包装类变量。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：Integer-->int<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer in = new Integer(1);<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//      int i = Integer;        //自动拆箱功能。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//       int i = Integer.intValue();<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：String-->Integer<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Srting s = "123";<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//      Integer in = Integer.parseInt(s);<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//       Integer in = new Integer(s);<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：Integer-->String<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer in = new Integer(123);<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int i = 123;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//     String s = in.toString();<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//       String s = in+"";<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//       String s = i + "";<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br/>
+		 <h3 style="margin:0px;">2.&nbsp;&nbsp;Object类</h3>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object类是所有类、数组、枚举类的父类，也就是说，Java允许把任何类型的对象包括八大基本类型的任何一种赋值给Object类型的变量。当定义一个类时没有使用extends关键词时，则该类默认继承Object父类。<br/>
+		 <br/>Object类提供的方法：<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean equals（object obj）<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;判断指定对象与该对象是否相等。判断标准：两个对象应用变量是否指向同一地址。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;protected void finalize（）<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当系统中没有引用变量引用到该变量时，垃圾回收器调用此方法来清理该对象的资源。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String toString（）<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;返回该对象的符号表示 ,当我们使用System.out.println方法输出一个对象或某个对象和字符串连接时，系统会自动调用toString方法返回该对象的字符串表示。Object的toString方法返回”运行时类名@16进制hashCode值“（hashCode是JDK根据对象的地址或者字符串或者数字算出来的int类型的数值）格式的字符串，但很多类都重写了Object类的toString方法，用来描述对象的所有状态信息。<br/>     
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除此之外Object还提供了其他的几个方法。<br/>
+		 <h3 style="margin:0px;">3.&nbsp;&nbsp;String类</h3>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是不可变类！即一旦一个String对象被创建以后，包含在这个对象中的字符序列是不可改变的（不能对原有的数据进行插入，删除部分，但是可以在末尾添加），直至这个对象被销毁。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toString方法——重写了Object类的toString方法,使之显示String对象中的内容。<br/>
+		 <br/>例：toString方法的重写<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class People{<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private String name;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public People(String name,int age){<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.name = name;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.age = age;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public String toString(){<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return "姓名："+name+"，年龄："+age;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public class Test{<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public static void main(String [] args){<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;People p = new People("李华",18);<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(p);          //当输出p对象时，实际上p对象会调用toString方法，输出的是toString的返回值。注意！只有当输出时才会自动调用toString方法。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(p.toString());<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;People p2 = p;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(p == p2);//输出true，不会调用toString方法。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br/>
+		 输出结果：<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名：李华，年龄：18<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名：李华，年龄：18<br/><br/>
+		 例：字符串常量的理解<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s = ”I”+“Love”+“Java”；<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上面的程序除了使用了3个字符串常量（临时变量）之外，还会额外生成2个字符串常量（临时变量），其中”I“和”LOVE”生成了“ILOVE”保存在内存中，接着“ILOVE”与“Java”生成了“ILOVEJava”字符串并将它赋给s变量。因为String是不可变的所以会额外产生很多临时变量，这些临时变量都存储在<a class="a2" target="_blank" href="../jvmmemory/index.html">JVM中的常量池中。</a><br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;常量池：是指在编译期被确定，并被保存在以编译的.class文件中的一些数据。它包括关于类、方法、接口中的常量，同时也包括了字符串常量。<br/>
+		 <h3 style="margin:0px;">4.&nbsp;&nbsp;==与equals的区别</h3>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java程序中测试两个变量是否相等有两种方式，一种是利用==运算符，另一种是利用equals方法。<br/><br/>
+		 ==判断两个变量是否相等<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果两个变量是基本类型的变量，且都是数值型，则只要两个变量的值相等，使用==判断将会返回true。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果两个变量是引用变量，必须他们指向同一个对象时(也就是判断内存地址是否一致)，==判断才会返回true。<br/>
+		 例：<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int i = 1;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int j = 1;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(i==j);       //将输出true<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float f = 1.0f;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(i==f);       //将输出true<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = 65;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char ch = 'A';<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(i==ch);       //将输出true<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s1 = new String("haha");<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s2 = new String("haha");<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s1==s2);       //将输出false<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s3 = s1;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s1==s3);       //将输出true<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br/><br/>
+		 例：<a class="a2" href="http://blog.csdn.net/hzc543806053/article/details/7324360" target="_blank">【转】</a>String 的经典笔试题一<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s = new String("abc");<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s1 = "abc";<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s2 = new String("abc");<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s == s1);<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s == s2);<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s1 == s2);<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请问 前面三条语句分别创建了几个对象,分别是什么.后面的输出分别是什么？<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)String s = new String("abc"); 这句,创建了两个对象，其内容都是"abc".注意,s不是对象,只是引用变量.只有new生成的才是对象.
+    创建的流程是,首先括号里 的"abc"先到常量池里看有没"abc"这个对象,没有则创建这个对象。所以这里就在常量池中创建了一个"abc"对象。然后  通过new语句又创建了一个"abc"对象，而这个对象是放在内存的堆里，这里的s指向堆里的对象.<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2) String  s1 = "abc"; 这条语句,s1当然还是引用。后面的"abc"，其实就是上面括号里的"abc".执行的是相同的操作.即  在常量池里查找有没"abc"这个对象.没有则创建一个，很显然,第一条语句已经创建了一个"abc".所以这条语句没有创建对 象,s1指向的是常量池中的"abc"<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)String  s2 = new String("abc");  这条语句,其实和第一条是一样的,但是,因为第一条已经在常量池中创建了"abc"这个对象,所以,这条语句创建了一个对象.s2指向的是堆里 的"abc"。注意,虽然内容都是"abc",s与s2表示的是不同的对象<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (4)下面的三个==判断.(注意,==永远是判断内存地址是否相等)  s与s1,一个指向堆里的对象,一个指向常量池里的.很明显是不同的对象.s与s2.上面说了,虽然都是指向堆里的对象,内容也是"abc",但是也不 是相同的对象.s1与s2.一个指向常量池,一个指向堆.也不是相同的对象.所以三个都返回false.<br/>
+		 <br/>例：<a class="a2" href="http://blog.csdn.net/hzc543806053/article/details/7324360" target="_blank">【转】</a>String 的经典笔试题二<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s = new String("abc");<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s1 = "abc";<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s2 = new String("abc");<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s == s1.intern());<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s == s2.intern());<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s1 == s2.intern());<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s1 == s2);<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;求最后输出是什么？<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后的答案是 false false true false。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intern()方法就是扩充常量池的一个方法；当一个String实例s调用intern()方法时，Java查找常量池中是否有相同的字符串常量，如果有，则返回这个字符串常量的引用但不会更改s的引用，如果没有，则在常量池中增加一个等于s的字符串常量并返回它的引用但不会更改s的引用；<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这样就很容易理解了。s1.intern返回的是常量池里的"abc"对象.与s这个堆里的对象肯定不同,返回false.同理,s与s2.intern()也肯定不 同,返回false.第三个,s1与s2.intern().其中s2.intern()返回的是常量池中的"abc"对象,而s1也是指向常量池中 的"abc"对象.所以返回的是true:对于最后的一个语句，虽然上一条语句s2调用了intern方法，但是并没有改变s2的引用s2仍指向堆里的对象，s1指向的是常量池的对象，故返回的是false<br/>
+		 <br/>例：<a class="a2" href="http://blog.csdn.net/hzc543806053/article/details/7324360" target="_blank">【转】</a>String 的经典笔试题三<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String hello = "hello";<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String hel = "hel";<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String lo = "lo";<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(hello == "hel" + "lo");<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(hello == "hel" + lo);<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(hello == hel + lo);<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;求输出的结果<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答：<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最后答案是 true false false<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先,上面已经说明了,hello hel lo这三个都是指向常量池中的对象。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现在我们考虑"hel" + "lo" 按照内容来说,两个相加也就是"hello".这个时候,这个会返回常量池中的"hello"对象.所以,hello == "hel" + "lo" 返回的是true .<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而"hel" + lo 虽然内容也是"hello",但是它将在堆里面生成一个"hello"对象,并返回这个对象。所以这里的结果是false。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同理hel + lo 虽然内容也是"hello",但是它也会在堆里面生成一个"hello"对象,并返回这个对象。所以这里的结果是false<br/>
+		 <br/>equals<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;equals 方法也是Object类提供的一个实例方法，所有Java对象都可调用equals方法。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object类判断两个对象是否相等的标准与==相同，只有两个变量指向同一个对象时才会返回true。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例：<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;class A{<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public class B{<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public static void main(String[] args){<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A a1 = new A();<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A a2 = new A();<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A a3 = a2;<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(a1.equals(a2));       //将输出false<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(a1.equals(a3));       //将输出false<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(a3.equals(a2));       //将输出true<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s1 = new String("asd");<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s2 = new String("asd");<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s3 = "asd";<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s1.equals(s2));       //将输出true<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s1.equals(s3));       //将输出true<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(s3.equals(s2));       //将输出true<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上例中String变量中s1，s2都是通过new创建过的实例，两个变量引用的地址是不一样的，那为什么会相等呢？<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这是因为String重写了equals对象，提供了判断两个变量相等的标准。（判断两个字符串相等的标准是：只要两个字符串所包含的字符序列相同，则通过equals比较将返回true）。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所以当我想通过equals判断我们自定义的对象是否是相同的，那我们得重写equals方法，给出我们的判断标准。<br/>
+		 <h3 style="margin:0px;">4.&nbsp;&nbsp;StringBuffer类</h3>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StringBuffer是一个可变的字符串，当一个StringBuffer被创建后，通过StringBuffer提供的append（末尾添加）、insert（插入）、reverse（翻转）、setCharAt（设置指定位置的字符）、setLength（设置字符串长度）等方法可以改变这个这个字符串对象。<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：当setLength的长度小于字符串的长度时，会截取掉末尾多余的不封。<br/>
+		 如：<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String s = “hellojava”<br/>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s.setLength(5); //s会变为“hello”<br/>
+		 <h3 style="margin:0px;">5.&nbsp;&nbsp;StringBuilder类</h3>
+		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;和StringBuffer基本类似。不同的是，StringBuffer是线程安全的，而StringBuilder则没有实现线程安全功能，但性能略高。<br/>
+        <h2>未完待续！敬请期待！</h2>
+     	<div style="margin:0 auto;width:480px;"><img src="../../images/leave.gif" /></div>
+    	 <h3 align="center">尊重原创，写博不易，转载请注</h3>
+    </p>
+</div>
+<div style="width:100%;height:120px;"><iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe></div>
+</body>
+</html>
