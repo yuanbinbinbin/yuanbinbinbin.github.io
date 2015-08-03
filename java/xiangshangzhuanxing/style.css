@@ -14,3 +14,8 @@ a.a1:link{
 a.a1:visited{color:#fff;}
 a.a1:hover{color:#CCC}
 
+a.a2:link{
+	color:#fff;
+	}
+a.a2:visited{color:#fff;}
+a.a2:hover{text-decoration:none;}

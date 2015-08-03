@@ -8,16 +8,24 @@
 <div style="width:800px;height:176px; margin:0 auto;"><iframe src="../../head.html" scrolling="no" style="height:190px;width:800px;height:170px;border:none;"></iframe></div>
 <div class="container">
 <h2>Java的守护线程和非守护线程</h2>
-    <p>关键词： 守护线程，非守护线程 </p>
+    <p>关键词： 进程，线程，守护线程，非守护线程 </p>
 	<p style="font-size:14px; line-height:20px; letter-spacing:0px;"> 
-    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+		<h3 style="margin:0px;">1.&nbsp;&nbsp;进程</h3>
+    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程是指运行中的应用程序，每个进程都有自己独立的内存空间。它是系统进行资源分配和调度的基本单位。进程由程序段、相关的数据段和PCB（进程控制块）三个部分构成。<br/>
+        <h3 style="margin:0px;">2.&nbsp;&nbsp;线程</h3>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;线程是指进程中能够独立执行的控制流，它是cpu调度和分派的基本单位，一个进程可以由多个线程组成，即在一个进程中可以同时运行多个不同的线程。主要分为：守护线程和非守护线程。<br/>
+        <h3 style="margin:0px;">3.&nbsp;&nbsp;非守护线程</h3>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;非守护线程也称为用户线程，是程序运行的主要线程，主要的业务逻辑是在非守护线程中实现的，主线程以及我们创建的子线程均为非守护线程。<br/>
+        <h3 style="margin:0px;">4.&nbsp;&nbsp;守护线程</h3>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;守护线程（也称Daemon进程）是为线程服务的，是在后台提供通用性支持的线程，守护线程的优先级最低，守护线程与用户线程写法上基本没有什么区别，用户线程可以被设置为守护线程，只要在调用start（）方法之前调用setDaemon（true）即可。Java垃圾回收线程就是一个守护线程。
+		守护线程在没有用户线程可服务时自动离开。<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+
     </p>
-     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OK!binge要说的也就这些了！希望大家从中有所收获，在家，下篇文章见！！^_^
+    
   <div style="margin:0 auto;width:480px;"><img src="../../images/leave.gif" /></div>
     <h3 align="center">写博不易，转载请注</h3>
 </div>

@@ -12,6 +12,36 @@
 </div>
 
 <div class="itemmode">
+<a class="a1" href="shouhuxiancheng/index.html"><h2>JVM的内存区域介绍</h2></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关键词： JVM , 运行时数据区 ，数据存储区
+
+       
+1.  运行时数据区概念
+       在讨论运行时数据区之前，让我们先看看Java程序是如何运行起来的。
+       如上图所示。首先，Java编译程序将后缀名为.Java的Java源程序编译为JVM可执行的代码，即后缀名为.class的Java字节码文件，解释执行过程分为代码装入（由类装载器完成）、代码的校验（由字节码校验器来完成）和代码的执行（由解释器来完成）三步进行。
+<div style=";margin-left:720px;">2015-8-2</div>
+</div>
+
+
+<div class="itemmode">
+<a class="a1" href="shouhuxiancheng/index.html"><h2>Java的守护线程和非守护线程</h2></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关键词： 进程，线程，守护线程，非守护线程
+1.  进程
+       进程是指运行中的应用程序，每个进程都有自己独立的内存空间。它是系统进行资源分配和调度的基本单位。进程由程序段、相关的数据段和PCB（进程控制块）三个部分构成。
+<div style=";margin-left:720px;">2015-8-1</div>
+</div>
+
+
+<div class="itemmode">
+<a class="a1" href="xiangshangzhuanxing/index.html"><h2>Java向上转型问题一</h2></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关键词： 向上转型 , 同名变量 ，同名方法
+       对象的上转型其实就是多态的一种表现。不知道大家有没有遇到这种情况！向上转型的对象访问的变量是父类原来的而不是子类重写的，但访问的方法是子类重写的！
+       大家都知道当向上转型的对象访问的方法是子类重写的方法（如果子类重写了父类的方法）。但为什么子类重写了父类的变量，向上转型的对象却访问的是父类的对象呢？今天我将和大家一起分析这个问题！
+<div style=";margin-left:720px;">2015-7-31</div>
+</div>
+
+
+<div class="itemmode">
 <a class="a1" href="javabase/index4.html"><h2>Java基础 四</h2></a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关键词： 包装类，Object类 ，String类，==与equals的区别，StringBuffer类，StringBuilder类1.  java 8个基本类型的包装类
         大家都知道Java有8个基本类型（boolean、byte、short、int、long、float、double、char），Java是面向对象的编程语言，但这8个基本数据类型是不支持面向对象的编程机制的，即基本类型没属性、方法可以被调用。 有时某个方法需要object类型的参数，但实际需要的值却是2、3等数值，基本数据类型就不能满足这种条件了。
