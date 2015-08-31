@@ -1,0 +1,10 @@
+body{
+	background:  #192d40 url('../../images/bg.jpg') repeat-x;
+	color:#fff; 
+}
+.container{
+	margin:0 auto;
+	width:780px;
+	font-size:15px;
+	line-height:25px;}
+

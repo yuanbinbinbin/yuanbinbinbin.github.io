@@ -1,0 +1,22 @@
+body{
+	background:  #192d40 url('../../images/bg.jpg') repeat-x;
+	color:#fff; 
+	font-family: "微软雅黑";
+}
+.container{
+	margin:0 auto;
+	width:780px;
+	font-size:15px;
+	line-height:25px;}
+
+p{
+	font-size: 15px;
+}
+a{
+	color:#ff0000;
+	text-decoration: none;
+}
+a:hover{
+	color: #EAFFEA;
+	text-decoration: underline;
+}

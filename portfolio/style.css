@@ -7,4 +7,13 @@ body{
 	width:780px;
 	font-size:15px;
 	line-height:25px;}
-
+.itemmode{
+	border-bottom:1px;
+	border-style:none  none dashed none ;
+	}
+a.a1:link{
+	font-size:12px;
+	color:#fff;
+	text-decoration:none;}
+a.a1:visited{color:#fff;}
+a.a1:hover{color:#CCC}
