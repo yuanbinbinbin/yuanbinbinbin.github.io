@@ -10,10 +10,83 @@
 <div style="padding-bottom:5px;border-bottom: 1px #324455;border-bottom-style:solid;font-size:18px;">
 &nbsp;&nbsp;公司人事管理系统
 </div>
-<div style="margin:0 auto;width:230px;padding-top:20px;">
-更新ing！O(∩_∩)O
+	<h1>项目介绍</h1>
+	<p>
+		   该项目为人员后台管理系统。<br />
+   		   借助于Java语言 、MySql数据库、JSP以及My Eclipse开发工具开发的一个公司人事后台管理系统。<br />
+                   该系统的人员角色有三类：Admin（管理员）、Reporter（上级）、Staff（普通员工）。<br />
+          Admin可以对自己的个人信息进行管理、对员工信息进行管理以及对所有团队/部门/公司进行管理<br />
+          Reporter可以对自己的个人信息进行管理和对下属的管理。<br />
+          Staff可以对自己的个人信息进行管理。<br />
+	</p>
+	<h2>1.登陆界面</h2>
+	<p>公司所有员工均从此页面登陆，根据员工的不同角色转入不同的页面。系统也会根据用户的不同操作，做出相应的响应。比如：用户名或密码未输入、密码输入错误等</p>
+	<div style="width:513px;margin:0 auto;">
+		<img width="513px" height="296px" src="images/login.png" />
+	</div>
+	<h2>2.管理员界面</h2>
+	<p>管理员为整个项目的起点，通过该账户可以添加公司、部门、团队以及员工，并可以对员工进行人事调动，管理员可以对自身的信息和登陆密码进行修改。</p>
+	<h2>2.1管理员主界面</h2>
+	<div style="width:600px;margin:0 auto;">
+		<img width="600px" height="300px" src="images/admin_main.png" />
+	</div>
+	<h2>2.2管理员添加员工</h2>
+	<div style="width:400px;margin:0 auto;">
+		<img width="400px" height="240px" src="images/admin_add.png" />
+	</div>
+	<h2>2.3管理员添加公司、部门、团队</h2>
+	<div style="width:320px;margin:0 auto;">
+		<img width="300px" height="200px" src="images/admin_add_team.png" />
+	</div>
+	<h2>2.4管理员批量指派员工角色</h2>
+	<div style="width:740px;margin:0 auto;">
+		<img width="740px" height="330px" src="images/admin_role.png" />
+	</div>
+	<h2>2.5管理员批量指派核实员工信息</h2>
+	<p>对员工的是否在职、以及缺勤原因进行批量管理</p>
+	<div style="width:1000px;margin:0 auto;">
+		<img width="1000px" height="460px" src="images/admin_check.jpg" />
+	</div>
+	<h2>2.6管理员管理公司、部门、团队</h2>
+	<div style="width:600px;margin:0 auto;">
+		<img width="600px" height="340px" src="images/admin_manage_team.png" />
+	</div>
+	<h2>3.普通员工界面</h2>
+	<p>普通员工可以对自己的个人信息和登陆密码进行管理。查看自己的上级和上级留言。</p>
+	<h2>3.1普通员工主界面</h2>
+	<div style="width:600px;margin:0 auto;">
+		<img width="600px" height="300px" src="images/staff_main.png" />
+	</div>
+	<h2>3.2普通员工查看上级界面</h2>
+	<div style="width:500px;margin:0 auto;">
+		<img width="500px" height="200px" src="images/staff_ups.png" />
+	</div>
+	<h2>3.3普通员工查看上级留言界面</h2>
+	<div style="width:860px;margin:0 auto;">
+		<img width="860px" height="220px" src="images/staff_msg.png" />
+	</div>
+	<h2>4.上级界面</h2>
+	<p>Reporter可以对自己的个人信息进行管理和对下属的管理。</p>
+	<h2>4.1上级查看下级界面</h2>
+	<p>上级查看自己的下属信息，并可以将所有下属的信息，以表格的形式下载下来。</p>
+	<div style="width:740px;margin:0 auto;">
+		<img width="740px" height="150px" src="images/report_look_down.png" />
+	</div>
+	<h2>4.2上级向下级留言界面</h2>
+	<div style="width:950px;margin:0 auto;">
+		<img width="950px" height="200px" src="images/report_msg.png" />
+	</div>
+	<h2>5更新个人信息界面</h2>
+	<p>管理员、上级、普通员工均可以修改自己的个人信息。</p>
+	<div style="width:620px;margin:0 auto;">
+		<img width="620px" height="340px" src="images/upself.png" />
+	</div>
+	<h2>6更改密码界面</h2>
+	<p>管理员、上级、普通员工均可以修改自己的登陆密码。</p>
+	<div style="width:600px;margin:0 auto;">
+		<img width="600px" height="250px" src="images/editpass.png" />
+	</div>
 </div>
-</div>
-<div style="width:100%;height:120px;position:fixed; bottom:0px; "><iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe></div>
+<div style="width:100%;height:120px; "><iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe></div>
 </body>
 </html>
