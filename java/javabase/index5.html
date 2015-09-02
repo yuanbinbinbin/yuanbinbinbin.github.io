@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="style.css" type="text/css"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	</head>
+	<body>
+		<div style="width:800px;height:176px; margin:0 auto;"><iframe src="../../head.html" scrolling="no" style="height:190px;width:800px;height:170px;border:none;"></iframe></div>
+		
+		<div class="container">
+			<h2>Java基础&nbsp;&nbsp;五</h2>
+    		<p>关键词： 异常，Throwable，Error，Exception</p>
+  			<p style="font-size:14px; line-height:20px; letter-spacing:0px;">
+  				 <h3 style="margin:0px;">1.&nbsp;&nbsp;什么事不正常情况</h3>
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不正常情况就是指由于硬件、人为因素或逻辑错误导致软件直接崩溃或不能按正常执行。<br/> 
+         		 <h3 style="margin:0px;">2.&nbsp;&nbsp;Java中不正常情况的设计</h3>
+         		 <img style="width:769px;height:471px;margin:0 auto;" src="images/exception_sort.png" />
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由上图知，java把所有非正常情况分成两种：异常和错误，他们都是继承Throwable父类。Throwable 类直接继承自Object类，它是 Java 语言中所有错误或异常的超类。只有当对象是此类（或其子类之一）的实例时，才能通过 Java 虚拟机或者 Java throw 语句抛出。<br/>
+				<h3 style="margin:0px;">3.&nbsp;&nbsp;异常</h3>
+				<h3 style="margin:0px;">3.1&nbsp;&nbsp;什么是异常</h3>
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;异常(Exception)就是超出了程序员预计的某些特殊情况，不在程序正常运行的情况之列。比如数组越界异常、空指针异常等<br/>
+  				 <h3 style="margin:0px;">3.2&nbsp;&nbsp;为什么要使用异常</h3>
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 异常机制可以让程序具有更好的容错性，也可以使程序中异常处理代码和正常业务代码分离，提高可读性，可以提高程序的健壮性。<br />
+         		 <h3 style="margin:0px;">3.3&nbsp;&nbsp;异常的分类</h3>
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由上图可以看出，异常分为运行时异常（RunttimeException）和检查异常（IOException、SQLException等）<br/>
+         		  <h3 style="margin:0px;">3.3.1&nbsp;&nbsp;运行时异常</h3>
+         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是指程序运行时可能发生的异常，比如空指针啊，数组越界啊，这些都是你写代码的bug或者是什么条件没满足导致的，这些异常是可以捕获，也可以不捕获的。如果不捕获，则直接抛给上级，如果上级没有给出处理方法（try-catch），则继续往上抛，直到有给出处理方法的地方或抛到虚拟机为止。<br />
+         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IndexOutOfBoundsException:数组越界异常。例：int []a = new int[3]; a[3] = 0;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NullPointerException:空指针异常。例：String s  = null ; s.toString();<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ClassCastException：类强制转换异常。例：Object o = new Integer(0); String s = (String)o; 正确写法：Object o = new String("123"); String s = (String)o;<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ArithmeticException([əˈrɪθmɪtɪk]):算数运算异常。例：int = 1 / 0;<br />
+         		 <h3 style="margin:0px;">3.3.1&nbsp;&nbsp;检查时异常</h3>
+         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java认为检查异常都是可以在编译阶段被处理的异常，它强制程序处理所有的检查时异常。检查时异常必须要处理，否侧编译不通过。<br />
+         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ClassNotFoundException：指定类或接口不存在。<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IllegalAccessException:非法访问异常。<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IOException：输入输出异常。<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileNotFoundException:找不到文件异常。<br />
+         		<h3 style="margin:0px;">3.3&nbsp;&nbsp;异常的捕获</h3>
+         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try：捕获异常块，里面放置可能引发异常的代码。<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch:处理异常 <br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;finall：一般用于回收在catch块打开的物理资源(例如:数据库连接、网络文件或磁盘文件)。<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch可多写，父类写后面。子类异常写前面，平级(没有继承关系 )顺序随便。 <br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：try块和catch块后的花括号不可省略！即使只有一行代码！！！try块里声明的变量是代码块内局部变量，它只在try块内有效，catch块中不能访问该变量。<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不管try块中的代码是否出现异常，也不管哪一个catch块被执行，finally块总会被执行。<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意:尽量避免在finally块使用return或throw，否则将会导致try块、catch块、中的return、throw失效。<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;异常处理中只有try块是必须的，如果没有try块，就没有catch块和finally块，catch块和finally块是可选的，但至少出现一次。<br />
+				<h3 style="margin:0px;">3.4&nbsp;&nbsp;异常的抛出</h3>
+         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当本级发生异常后，本级不知道该如何去处理时，我们就需要将该异常抛给调用本级的上级，或可规定当软件发生某种情况会抛出异常，通过Throw关键词。<br />
+         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例:<br />
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    1. String s = "abc";  <br />
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       if(s.equals("abc")) {  <br />
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         throw new NumberFormatException(); <br /> 
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       } else {  <br />
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         System.out.println(s);  <br />
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        }  <br />
+				<h3 style="margin:0px;">3.5&nbsp;&nbsp;throw与throws的区别</h3>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、throws出现在方法头部,用于声明该方法可能抛出的异常；而throw出现在方法体中，用于抛出异常。<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、throws表示出现异常的一种可能性，并不一定会发生这些异常；throw则是抛出了异常，执行throw则一定抛出了某种异常对象。<br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3、两者都是消极处理异常的方式（这里的消极并不是说这种方式不好），只是抛出或者可能抛出异常，但是不会由本方法去处理异常，真正的处理异常由方法的上层调用者处理，如果上层调用者仍然不知道则继续往上抛，直到抛给虚拟机，虚拟机会将异常的跟踪栈信息打印出来，并结束该程序。<br />
+				<h3 style="margin:0px;">3.6&nbsp;&nbsp;异常转译</h3>
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;程序先捕获原始的异常，然后抛出一个新的业务异常，新的业务异常中包含了对用户的提示信息，这种处理方式被称为异常转译<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这种把捕获一个异常然后接着抛出另一个异常，并把原始信息保存下来的是一种典型的链式处理，已成为“异常链”。
+        		<br/><br/><h3 style="margin:0px;">4&nbsp;&nbsp;错误</h3>
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一般是指虚拟机相关的问题,如系统崩溃、虚拟机出错误、动态链接失败等。这种错误是无法恢复和捕获的，将导致应用程序中断。<br />
+  			</p>
+  			<h2>未完待续</h2>
+	     	<div style="margin:0 auto;width:480px;"><img src="../../images/leave.gif" /></div>
+	    	<h3 align="center">尊重原创，写博不易，转载请注</h3>
+		</div>
+		
+		<div style="width:100%;height:120px;"><iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe></div>
+	</body>
+</html>

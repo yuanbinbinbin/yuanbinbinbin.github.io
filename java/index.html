@@ -11,11 +11,19 @@
 &nbsp;&nbsp;java
 </div>
 
+
+<div class="itemmode">
+<a class="a1" href="javabase/index5.html"><h2>Java基础 五</h2></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关键词： 异常，Throwable，Error，Exception
+1.  什么事不正常情况
+       不正常情况就是指由于硬件、人为因素或逻辑错误导致软件直接崩溃或不能按正常执行。
+2.  Java中不正常情况的设计	由上图知，java把所有非正常情况分成两种：异常和错误，他们都是继承Throwable父类。Throwable 类直接继承自Object类，它是 Java 语言中所有错误或异常的超类。只有当对象是此类（或其子类之一）的实例时，才能通过 Java 虚拟机或者 Java throw 语句抛出。
+<div style=";margin-left:720px;">2015-8-8</div>
+</div>
+
 <div class="itemmode">
 <a class="a1" href="shouhuxiancheng/index.html"><h2>JVM的内存区域介绍</h2></a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关键词： JVM , 运行时数据区 ，数据存储区
-
-       
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关键词： JVM , 运行时数据区 ，数据存储区     
 1.  运行时数据区概念
        在讨论运行时数据区之前，让我们先看看Java程序是如何运行起来的。
        如上图所示。首先，Java编译程序将后缀名为.Java的Java源程序编译为JVM可执行的代码，即后缀名为.class的Java字节码文件，解释执行过程分为代码装入（由类装载器完成）、代码的校验（由字节码校验器来完成）和代码的执行（由解释器来完成）三步进行。
