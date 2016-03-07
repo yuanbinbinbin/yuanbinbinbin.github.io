@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>iplayer</title>
+<link rel="stylesheet" href="style.css" type="text/css"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+<div style="width:800px;height:176px; margin:0 auto;">
+	<iframe src="../../head.html" scrolling="no" style="height:190px;width:800px;height:170px;border:none;"></iframe>
+</div>
+<div class="container">
+	<div style="padding-bottom:5px;border-bottom: 1px #324455;border-bottom-style:solid;font-size:18px;">
+&nbsp;&nbsp;汽车服务-车帮帮app
+</div>
+	<h2>1.欢迎界面</h2>
+	<p>程序进行初始化工作，加载上次关闭时app的状态。主要用到SharedPreference。</p>
+	<div style="width:270px;margin:0 auto;">
+		<img width="270px" height="480px" src="images/welcome.png" />
+	</div>
+	<h2>2.主界面</h2>
+	<p>程序初始化完成后，将进入主界面，如下图。左右滑动主界面中的viewpager，来快速查找相应的服务。</p>
+	<div style="width:270px;margin:0 auto;">
+		<img width="270px" height="480px" src="images/mainpage.png" />
+	</div>
+	<h2>3.在线界面（定位功能以完成）</h2>
+	<p>此部分需要联网获取数据，UI已实现，功能部分尚未完成。</p>
+	<h3>3.1定位界面</h3>
+	<p>本页以实现自动定位功能，采用高德SDK进行开发，当然也可自己查找自己想定位到的城市，并以实现搜索功能。界面侧边通过自定义View实现首字母快速切换。</p>
+	<div style="width:580px;margin:0 auto;">
+		<img width="270px" height="480px" src="images/locating.png" />&nbsp;&nbsp;
+		<img width="270px" height="480px" src="images/locating2.png" />
+	</div>
+	<h3>3.2选择城区界面</h3>
+	<p>当点击北京按钮时，通过异步加载从网络下载数据。将该城市下的城区动态的添加到弹出的Dialog中。</p>
+	<div style="width:850px;margin:0 auto;">
+		<img width="270px" height="480px" src="images/selectcity.png" />
+	</div>
+	<h2>4.商品展示界面</h2>
+	<p>此部分需要联网获取数据，UI已实现，功能部分尚未完成。实现二级菜单（仿美团），</p>
+	<div style="width:850px;margin:0 auto;">
+		<img width="270px" height="480px" src="images/showgoods1.png" />
+		<img width="270px" height="480px" src="images/showgoods2.png" />
+		<img width="270px" height="480px" src="images/showgoods3.png" /><br />
+		<img width="270px" height="480px" src="images/showgoods4.png" />&nbsp;&nbsp;
+		<img width="270px" height="480px" src="images/showgoods5.png" />
+	</div>
+	<h2>5.地图界面</h2>
+	<p>已实现地图定位，蓝色箭头为自己所在位置，可点击右下角加减进行地图的放大与缩小。</p>
+	<div style="width:270px;margin:0 auto;">
+		<img width="270px" height="480px" src="images/Map.png" />
+	</div>
+	<a href="http://pan.baidu.com/s/1pJuXzsR"><h1>项目地址</h1></a>
+	<a href="http://pan.baidu.com/s/1o6qpGlO"><h1>软件地址</h1></a>
+	<p style="font-size: 20px; color: #FF0000;">
+		注：所有UI素材均来自网络<br />
+		项目如有问题可联系我，邮箱：2460666162@qq.com
+	</p>
+</div>
+<div style="width:100%;height:120px;">
+	<iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe>
+</div>
+</body>
+</html>

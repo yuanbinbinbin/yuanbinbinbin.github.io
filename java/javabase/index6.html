@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="style.css" type="text/css"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	</head>
+	<body>
+		<div style="width:800px;height:176px; margin:0 auto;"><iframe src="../../head.html" scrolling="no" style="height:190px;width:800px;height:170px;border:none;"></iframe></div>
+		
+		<div class="container">
+			<h2>Java基础&nbsp;&nbsp;六</h2>
+    		<p>关键词： 多线程，后台线程，守护线程，yield方法，线程调度</p>
+  			<p style="font-size:14px; line-height:20px; letter-spacing:0px;">
+  				 <h3 style="margin:0px;">1.&nbsp;&nbsp;并发性与并行性</h3>
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;并发性：在同一时刻只能有一条指令执行，但多个继承指令被轮换执行，是的宏观上具有多个进程同时执行的效果。<br/> 
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;并行性：指在同一时刻，有多条指令在多个处理器上同时执行。<br/> 
+         		 <h3 style="margin:0px;">2.&nbsp;&nbsp;线程与进程的区别</h3>
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程：进程对应一个程序，每个进程对应一定的内存地址空间，并且只能使用它自己的内存空间，各个进程间互不干扰。并且进程保存了程序每个时刻的运行状态，这样就为进程切换提供了可能。当进程暂时时，它会保存当前进程的状态（比如进程标识、进程的使用的资源等），在下一次重新切换回来时，便根据之前保存的状态进行恢复，然后继续执行。<br/>
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;线程：轻量的进程，同一类线程共享代码和数据空间，每个线程有独立的运行栈和程序计数器（PC），线程切换的开销小<br/>
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程包含多个线程、线程只能切必须有一个父进程<br/>
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程切换开销大，线程切换开销小<br/>
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程间不能共享内存，但线程之间共享内存空间。<br/>
+         		 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进程是操作系统进行资源分配的基本单位，而线程是操作系统进行调度的基本单位。<br/>
+         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：一个进程虽然包括多个线程，但是这些线程是共同享有进程占有的资源和地址空间的。<br />
+				<h3 style="margin:0px;">3.&nbsp;&nbsp;多进程与多线程</h3>
+         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多进程：在操作系统中能同时运行多个任务（程序）<br/>
+         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;多线程：在同一应用程序中有多个顺序流同时执行<br/>
+  				 <h3 style="margin:0px;">4.&nbsp;&nbsp;线程的创建</h3>
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;线程创建的两种方式：<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    继承Teread<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    实现Runnable接口<br />
+        		 <h3 style="margin:0px;">5.&nbsp;&nbsp;线程的创建两种方式的区别</h3>
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    （1）采用Runnable接口方式的多线程：<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        线程类只是实现Runnable接口，还可以继承其他类。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        在这种方式下，可以多线程共享同一个target对象，所以非常适合多个相同线程来处理同一份资源<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        劣势：<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            编程复杂，如果需要访问当前线程，必须使用Thread.currentThread（）方法<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    （2）采用继承Thread类方式的多线程<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        优势：<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            编写简单，如果需要访问当前线程，无须使用Thread.currentThread（）方法直接使用this即可获得当前线程。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        劣势：<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;            因为线程已经继承了Thread类，所以不能继承其他父类。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    综上，建议使用实现Runnable接口的方式来实现多线程。  <br />
+        		<h3 style="margin:0px;">6.&nbsp;&nbsp;线程的五个状态</h3>
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;新建：当使用new新建一个线程时，这就处于新建状态了，新建状态主要要是初始化线程。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;就绪：当线程调用start（）方法后，该线程就处于就绪状态了，JVM会为其创建方法调用栈和程序计数器。就绪状态表示线程处于可以运行状态。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运行：如果处于就绪状态的线程获得CPU时间就处于运行状态。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阻塞：如果处于运行状态的线程调用了sleep（）方法或为了等待其他线程而放弃CPU进入阻塞状态！注意！！阻塞状态只能转向就绪状态！不可能直接转向运行状态。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;死亡：当执行体执行完，或因异常抛出等原因，则进入死亡状态。<br />
+        		<h3 style="margin:0px;">7.&nbsp;&nbsp;运行状态-->阻塞状态</h3>
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;suspend  方法  ，  需要resume（）方法激活该线程到就绪状态。注意！不会释放同步锁！<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sleep       方法  ，  只有当指定睡眠时间到后才会回到就绪状态。注意！不会释放同步锁！<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;join          方法  阻塞当前调用方法的线程，先让调用该方法的线程先执行，执行完以后，才恢复到就绪状态。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        例：在A线程中，调用B线程的join方法，那么A线程将阻塞，直到B线程执行完成。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;线程调用了一个阻塞式IO方法，再改方法返回之前，该线程被阻塞。如：等待控制台输入。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;线程等待某个通知（notify）。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;线程试图获得同步监视器，但同步监视器被其他线程所拥有，直到其他线程放弃同步监视器，此线程才会恢复到就绪状态。<br />
+        		<h3 style="margin:0px;">8.&nbsp;&nbsp;线程的死亡方式</h3>
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;调用stop（）方法<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;线程的执行体执行完成或调用return。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;线程抛出一个未捕获的exection或error。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：主线程结束以后，对其他线程没有影响，原因：线程启动以后就拥有和主线程相同的地位。<br />
+        		<h3 style="margin:0px;">9.&nbsp;&nbsp;后台线程=守护线程</h3>
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;后台线程 = 守护线程  为其他线程提供服务<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;后台线程的特征：如果所有前台线程都死亡后，后台线程会自动死亡。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主线程是一个前台线程<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过setDaemon（）方法设置为后台线程<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注意：必须在线程启动之前设置为后台线程，即在调用start（）方法之前调用setDaemon（）方法。<br />
+        		<h3 style="margin:0px;">10.&nbsp;&nbsp;yield方法</h3>
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;线程让步方法，让线程直接回到就绪状态，给相同或更高优先级的线程执行的机会。<br />
+        		<h3 style="margin:0px;">11.&nbsp;&nbsp;线程调度--分时调度模型和抢占式调度模型 </h3>
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分时调度模型，是指让所有的线程轮流获得cpu的使用权,并且平均分配每个线程占用的CPU的时间片。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;抢占式调度模型，是指优先让可运行池中优先级高的线程占用CPU，如果可运行池中的线程优先级相同，那么就随机选择一个线程，使其占用CPU。处于运行状态的线程会一直运行，直至它不得不放弃CPU。<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        		
+        		
+  			</p>
+  			<h2>未完待续</h2>
+	     	<div style="margin:0 auto;width:480px;"><img src="../../images/leave.gif" /></div>
+	    	<h3 align="center">尊重原创，写博不易，转载请注</h3>
+		</div>
+		
+		<div style="width:100%;height:120px;"><iframe src="../../bottom.html" scrolling="no" style="height:120px;width:100%;margin:0 auto;border:none;"></iframe></div>
+	</body>
+</html>
